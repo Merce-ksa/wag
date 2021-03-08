@@ -3,7 +3,6 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const cors = require('cors');
-
 const { connect } = require('mongoose');
 const userRouter = require('./src/routes/userRouter');
 
