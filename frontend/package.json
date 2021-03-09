@@ -38,5 +38,10 @@
     "eject": "expo eject",
     "test": "jest --watchAll --collect-coverage"
   },
-  "private": true
+  "private": true,
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/"
+    ]
+  }
 }

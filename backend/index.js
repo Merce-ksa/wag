@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 
 app.listen(port, () => {
   debug(`Server runing in ${chalk.green(`http://localhost:${port}`)}`);

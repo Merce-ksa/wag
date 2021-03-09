@@ -56,7 +56,7 @@ export default StyleSheet.create({
 
   },
   submitButtonText: {
-    color: '#000',
+    color: '#fff',
     textAlign: 'center'
   }
 
