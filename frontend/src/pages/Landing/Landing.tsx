@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import LandingStyles from './LandingStyles'
 import Hero from '../../components/Hero/Hero'
 
-export default function Landing ({ navigation }) {
+export default function Landing ({ navigation }: any) {
   return (
     <View style={LandingStyles.container}>
       <Hero />
@@ -16,6 +15,7 @@ export default function Landing ({ navigation }) {
       </View>
       <View style={LandingStyles.autenticationContainer}>
         <TouchableOpacity
+          testID="login"
           onPress={() =>
             navigation.navigate('Login', { name: 'Login' })
           }
@@ -23,6 +23,7 @@ export default function Landing ({ navigation }) {
           <Text style = {LandingStyles.loginText}> I have an account </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          testID="register"
           style = {LandingStyles.register}
           onPress={() =>
             navigation.navigate('Register', { name: 'Register' })
