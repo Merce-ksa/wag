@@ -8,6 +8,9 @@ export default function userReducer (state = [], actions) {
     case actionTypes.LOGOUT:
       return null
 
+    case actionTypes.REGISTERED:
+      return 200
+
     default:
       return state
   }
