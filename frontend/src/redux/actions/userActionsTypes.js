@@ -1,8 +1,7 @@
 const actionTypes = {
+  REGISTERED: 'REGISTERED',
   LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT',
-  REGISTER: 'REGISTER',
-  LOAD_USERS: 'LOAD_USERS'
+  LOGOUT: 'LOGOUT'
 }
 
 export default actionTypes

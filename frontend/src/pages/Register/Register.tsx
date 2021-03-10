@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import registerStyles from './RegisterStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import register from '../../redux/actions/userActions'
+import Hero from '../../components/Hero/Hero'
 
 function Register ({ actions }) {
   const [email, setEmail] = useState()
@@ -12,30 +13,18 @@ function Register ({ actions }) {
 
   return (
     <View style={registerStyles.container}>
-      <View style={registerStyles.hero}>
-        <ImageBackground
-          source={require('../../images/wave.png')}
-          style={registerStyles.wave}
-        >
-          <Image
-            source={require('../../images/wag-logo.png')}
-            style={registerStyles.logo}
-          />
-        </ImageBackground>
-      </View>
-      <View style={registerStyles.welcome}>
-        <Text style={registerStyles.welcome}>Welcome to</Text>
-        <Text style={registerStyles.brand}>WAG</Text>
-        <Text style={registerStyles.description}>The platform to store and share digital material! Do not lose anything!</Text>
-        <Text style={registerStyles.description}>Join For Free</Text>
-      </View>
-      <View style={registerStyles.formContainer}>
+      <Hero />
 
+      <View style={registerStyles.titleContainer}>
+        <Text style={registerStyles.title}>Sing up</Text>
+      </View>
+
+      <View style={registerStyles.formContainer}>
         <TextInput
           style = {registerStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Email"
-          placeholderTextColor = "#9a73ef"
+          placeholderTextColor = "#7B7F9E"
           autoCapitalize = "none"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -45,7 +34,18 @@ function Register ({ actions }) {
           style = {registerStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Password"
-          placeholderTextColor = "#9a73ef"
+          placeholderTextColor = "#7B7F9E"
+          secureTextEntry={true}
+          autoCapitalize = "none"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          >
+        </TextInput>
+        <TextInput
+          style = {registerStyles.input}
+          underlineColorAndroid = "transparent"
+          placeholder = "Repeat password"
+          placeholderTextColor = "#7B7F9E"
           secureTextEntry={true}
           autoCapitalize = "none"
           value={password}
