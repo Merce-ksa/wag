@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Landing function When is rendered Should Landing match the snapshot  1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 0.5,
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/wave.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": "100%",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      />
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/wag-logo.png",
+          }
+        }
+        style={
+          Object {
+            "resizeMode": "contain",
+            "width": "60%",
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 20,
+        "padding": 5,
+        "textAlign": "left",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 20,
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      Welcome to
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 38,
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      WAG
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#7B7F9E",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      The platform to store and share digital material! Do not lose anything!
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#7B7F9E",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      Join For Free
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginRight": 10,
+        "marginTop": 50,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="login"
+    >
+      <Text
+        style={
+          Object {
+            "color": "#567DF4",
+            "fontWeight": "bold",
+          }
+        }
+      >
+         I have an account 
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#567DF4",
+          "borderRadius": 5,
+          "height": 40,
+          "justifyContent": "center",
+          "marginLeft": 10,
+          "opacity": 1,
+        }
+      }
+      testID="register"
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 18,
+            "padding": 20,
+            "textAlign": "center",
+          }
+        }
+      >
+         Sing up 
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Given a Landing function When is rendered Should Landing match the snapshot  2`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 0.5,
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/wave.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": "100%",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      />
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/wag-logo.png",
+          }
+        }
+        style={
+          Object {
+            "resizeMode": "contain",
+            "width": "60%",
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 20,
+        "padding": 5,
+        "textAlign": "left",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 20,
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      Welcome to
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 38,
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      WAG
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#7B7F9E",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      The platform to store and share digital material! Do not lose anything!
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#7B7F9E",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "padding": 5,
+          "textAlign": "left",
+        }
+      }
+    >
+      Join For Free
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginRight": 10,
+        "marginTop": 50,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="login"
+    >
+      <Text
+        style={
+          Object {
+            "color": "#567DF4",
+            "fontWeight": "bold",
+          }
+        }
+      >
+         I have an account 
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#567DF4",
+          "borderRadius": 5,
+          "height": 40,
+          "justifyContent": "center",
+          "marginLeft": 10,
+          "opacity": 1,
+        }
+      }
+      testID="register"
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 18,
+            "padding": 20,
+            "textAlign": "center",
+          }
+        }
+      >
+         Sing up 
+      </Text>
+    </View>
+  </View>
+</View>
+`;
