@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import registerStyles from './RegisterStyles'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import register from '../../redux/actions/userActions'
 
-export default function Register () {
+function Register ({ actions }) {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  console.log(actions)
+
   return (
     <View style={registerStyles.container}>
       <View style={registerStyles.hero}>
@@ -29,23 +36,42 @@ export default function Register () {
           underlineColorAndroid = "transparent"
           placeholder = "Email"
           placeholderTextColor = "#9a73ef"
-          autoCapitalize = "none">
-        </TextInput>
+          autoCapitalize = "none"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
         <TextInput
           style = {registerStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Password"
           placeholderTextColor = "#9a73ef"
-          autoCapitalize = "none">
+          secureTextEntry={true}
+          autoCapitalize = "none"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          >
         </TextInput>
 
         <TouchableOpacity
-          style = {registerStyles.submitButton}>
-          <Text style = {registerStyles.submitButtonText}> Submit </Text>
+          style = {registerStyles.submitButton}
+          onPress={() => actions.register(email, password)}
+          disabled={!email || !password}
+        >
+          <Text style = {registerStyles.submitButtonText}> Create account </Text>
         </TouchableOpacity>
       </View>
 
     </View>
   )
 }
+
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators({
+      register
+    }, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Register)
