@@ -1,5 +1,5 @@
 const md5 = require('md5');
-const User = require('../models/userSchema');
+const User = require('../models/userModel');
 
 function UserController() {
   function registerUser(req, res) {

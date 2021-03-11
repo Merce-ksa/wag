@@ -1,24 +1,34 @@
 const express = require('express');
-const chalk = require('chalk');
 const debug = require('debug')('app');
-const morgan = require('morgan');
 const cors = require('cors');
 const { connect } = require('mongoose');
+const session = require('express-session');
+const chalk = require('chalk');
 const userRouter = require('./src/routes/userRouter');
+const authRouter = require('./src/routes/authRouter');
+
+const skyHost = 'http://192.168.0.33';
 
 const app = express();
 const port = process.env.PORT || 5000;
-const skyHost = 'http://192.168.0.33';
 
-connect('mongodb+srv://admin:admin@cluster0.xqkix.mongodb.net/wag', { useNewUrlParser: true, useUnifiedTopology: true });
+connect(
+  'mongodb+srv://admin:admin@cluster0.xqkix.mongodb.net/wag',
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }
+);
 
-app.use(morgan('dev'));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
+require('./src/passport')(app);
+
+app.use(session({ secret: 'wag directory' }));
 
 app.use('/user', userRouter);
+app.use('/auth', authRouter);
 
 app.listen(port, () => {
   debug(`Server runing in ${chalk.green(`${skyHost}:${port}`)}`);
