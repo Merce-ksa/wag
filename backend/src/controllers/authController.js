@@ -9,7 +9,7 @@ function Auth() {
     User.findOne({ email }, (error, user) => {
       if (user !== null) {
         res.send('exist');
-        res.status(409);
+        res.status(203);
       } else {
         const newUser = new User({
           email,
@@ -19,9 +19,8 @@ function Auth() {
 
         try {
           newUser.save();
-
           res.send('Hi');
-          res.status(200);
+          res.status(201);
         } catch {
           res.send('Oops');
           res.status(500);

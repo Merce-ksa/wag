@@ -7,11 +7,14 @@ function LocalStrategy() {
     new Strategy(
       {
         usernameField: 'email',
-        passwordField: 'passwd'
+        passwordField: 'password'
       },
       (email, password, done) => {
         User.findOne({ email }, (err, user) => {
-          if (err) { return done(err); }
+          if (err) {
+            console.log(`si no lo encuentra: ${err}`);
+            return done(err);
+          }
           if (!user) {
             return done(null, false, { message: 'Incorrect email.' });
           }
