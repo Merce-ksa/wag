@@ -25,9 +25,7 @@ export default function Landing ({ navigation }: any) {
         <TouchableOpacity
           testID="register"
           style = {LandingStyles.register}
-          onPress={() =>
-            navigation.navigate('Register', { name: 'Register' })
-          }
+          onPress={() => navigation.navigate('Register', { name: 'Register' })}
         >
           <Text style = {LandingStyles.registerTetx}> Sing up </Text>
         </TouchableOpacity>

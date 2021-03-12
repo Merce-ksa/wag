@@ -6,7 +6,7 @@ const userSchema = new Schema({
   name: String,
   description: String,
   photoURL: String,
-  registeredAt: Date
+  registeredAt: []
 });
 
 module.exports = model('User', userSchema);

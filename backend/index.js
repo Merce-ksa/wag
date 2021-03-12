@@ -7,7 +7,8 @@ const chalk = require('chalk');
 const userRouter = require('./src/routes/userRouter');
 const authRouter = require('./src/routes/authRouter');
 
-const skyHost = 'http://192.168.0.33';
+// const skyHost = 'http://192.168.0.33';
+const homeHost = 'exp://192.168.1.26';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -31,5 +32,5 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 
 app.listen(port, () => {
-  debug(`Server runing in ${chalk.green(`${skyHost}:${port}`)}`);
+  debug(`Server runing in ${chalk.green(`${homeHost}:${port}`)}`);
 });

@@ -4,27 +4,30 @@ const User = require('../models/userModel');
 function Auth() {
   function register(req, res) {
     const { email, password } = req.body;
-    const user = new User({
-      email,
-      password: md5(password)
-    });
+    const [month, day, year] = new Date().toLocaleDateString('en-US').split('/');
 
-    try {
-      user.save();
-      res.status(200);
-      res.send('Holaaa');
-      //   req.login(user, () => {
-      // res.redirect({
-      //   successRedirect: '/user',
-      //   failureRedirect: '/login',
-      //   failureFlash: true
-      // });
-      //   });
-    } catch (error) {
-      res.status(500);
-      res.send(error);
-      res.send('estopetaaaa');
-    }
+    User.findOne({ email }, (error, user) => {
+      if (user !== null) {
+        res.send('exist');
+        res.status(409);
+      } else {
+        const newUser = new User({
+          email,
+          password: md5(password),
+          registeredAt: [year, month, day]
+        });
+
+        try {
+          newUser.save();
+
+          res.send('Hi');
+          res.status(200);
+        } catch {
+          res.send('Oops');
+          res.status(500);
+        }
+      }
+    });
   }
 
   function login(req, res) {

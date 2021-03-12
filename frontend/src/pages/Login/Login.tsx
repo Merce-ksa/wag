@@ -1,14 +1,15 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react'
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import loginStyles from './LoginStyles'
-// import { bindActionCreators } from 'redux'
-// import { connect } from 'react-redux'
-// import register from '../../redux/actions/userActions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { login } from '../../redux/actions/userActions'
 import Hero from '../../components/Hero/Hero'
 
-export default function Register () {
-  // const [email, setEmail] = useState()
-  // const [password, setPassword] = useState()
+function Register ({ actions }) {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
   return (
     <View style={loginStyles.container}>
@@ -25,8 +26,8 @@ export default function Register () {
           placeholder = "Email"
           placeholderTextColor = "#7B7F9E"
           autoCapitalize = "none"
-          // value={email}
-          // onChange={(event) => setEmail(event.target.value)}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <TextInput
           style = {loginStyles.input}
@@ -35,15 +36,15 @@ export default function Register () {
           placeholderTextColor = "#7B7F9E"
           secureTextEntry={true}
           autoCapitalize = "none"
-          // value={password}
-          // onChange={(event) => setPassword(event.target.value)}
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
           >
         </TextInput>
 
         <TouchableOpacity
           style = {loginStyles.submitButton}
-          // onPress={() => actions.register(email, password)}
-          // disabled={!email || !password}
+          onPress={() => actions.register(email, password)}
+          disabled={!email || !password}
         >
           <Text style = {loginStyles.submitButtonText}> Send </Text>
         </TouchableOpacity>
@@ -53,12 +54,12 @@ export default function Register () {
   )
 }
 
-// function mapDispatchToProps (dispatch) {
-//   return {
-//     actions: bindActionCreators({
-//       register
-//     }, dispatch)
-//   }
-// }
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators({
+      login
+    }, dispatch)
+  }
+}
 
-// export default connect(null, mapDispatchToProps)(Register)
+export default connect(null, mapDispatchToProps)(Register)
