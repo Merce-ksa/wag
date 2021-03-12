@@ -4,11 +4,12 @@ const cors = require('cors');
 const { connect } = require('mongoose');
 const session = require('express-session');
 const chalk = require('chalk');
+const morgan = require('morgan');
 const userRouter = require('./src/routes/userRouter');
 const authRouter = require('./src/routes/authRouter');
 
-// const skyHost = 'http://192.168.0.33';
-const homeHost = 'exp://192.168.1.26';
+const skyHost = 'http://192.168.0.33';
+// const homeHost = 'http://192.168.1.26';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ connect(
 
 app.use(cors());
 app.use(express.json());
+app.use(morgan('dev'));
 
 require('./src/passport')(app);
 
@@ -32,5 +34,5 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 
 app.listen(port, () => {
-  debug(`Server runing in ${chalk.green(`${homeHost}:${port}`)}`);
+  debug(`Server runing in ${chalk.green(`${skyHost}:${port}`)}`);
 });
