@@ -1,14 +1,32 @@
 import axios from 'axios'
 import userActionsTypes from './userActionsTypes'
 
-export default function register (email, password) {
-  const skyHost = 'http://192.168.0.33:5000'
+export function register (email, password) {
+  // const skyHost = 'http://192.168.0.33:5000'
+  const homeHost = 'http://192.168.1.26:5000'
 
   return async (dispatch) => {
-    await axios.post(`${skyHost}/user`, { email, password })
+    const statusRegister = await axios.post(`${homeHost}/auth/register`, { email, password })
+    console.log(statusRegister)
 
     dispatch({
-      type: userActionsTypes.REGISTERED
+      type: userActionsTypes.REGISTERED,
+      data: statusRegister
+    })
+  }
+}
+
+export function login (email, password) {
+  // const skyHost = 'http://192.168.0.33:5000'
+  const homeHost = 'http://192.168.1.26:5000'
+
+  return async (dispatch) => {
+    const user = await axios.post(`${homeHost}/auth/login`, { email, password })
+    console.log(user)
+
+    dispatch({
+      type: userActionsTypes.LOGIN,
+      data: user
     })
   }
 }
