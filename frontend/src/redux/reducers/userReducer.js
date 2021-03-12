@@ -1,11 +1,11 @@
-// import actionTypes from '../actions/userActionsTypes'
+import actionTypes from '../actions/userActionsTypes'
 
-// export default function userReducer (state = [], actions) {
-//   switch (actions.type) {
-//     case actionTypes.REGISTERED:
-//       return actions.data
+export default function userReducer (state = [], actions) {
+  switch (actions.type) {
+    case actionTypes.REGISTERED:
+      return actions.data
 
-//     default:
-//       return state
-//   }
-// }
+    default:
+      return state
+  }
+}

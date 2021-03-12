@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-// import userReducer from './userReducer'
+import userReducer from './userReducer'
 import statusRegisterReducer from './statusRegisterReducer'
 
 const rootReducer = combineReducers({
-  // user: userReducer,
+  user: userReducer,
   statusRegister: statusRegisterReducer
 })
 
