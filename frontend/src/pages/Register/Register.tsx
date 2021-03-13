@@ -15,7 +15,7 @@ function Register ({ actions, statusRegister, navigation }) {
   console.log(statusRegister.status)
 
   if (statusRegister.status === 200) {
-    navigation.navigate('Login', { name: 'Login' })
+    navigation.navigate('Home', { name: 'Home' })
   } else if (statusRegister.status === 500) {
     Alert.alert(
       'Error 500',

@@ -1,15 +1,17 @@
 const express = require('express');
 const debug = require('debug')('app');
-const cors = require('cors');
-const { connect } = require('mongoose');
-const session = require('express-session');
 const chalk = require('chalk');
 const morgan = require('morgan');
-const userRouter = require('./src/routes/userRouter');
-const authRouter = require('./src/routes/authRouter');
+const { connect } = require('mongoose');
+const cors = require('cors');
+const session = require('express-session');
 
-const skyHost = 'http://192.168.0.33';
-// const homeHost = 'http://192.168.1.26';
+const authRouter = require('./src/routes/authRouter');
+const userRouter = require('./src/routes/userRouter');
+const groupRouter = require('./src/routes/groupRouter');
+
+// const skyHost = 'http://192.168.0.33';
+const homeHost = 'http://192.168.1.26';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -30,9 +32,10 @@ require('./src/passport')(app);
 
 app.use(session({ secret: 'wag directory' }));
 
-app.use('/user', userRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
+app.use('/groups', groupRouter);
 
 app.listen(port, () => {
-  debug(`Server runing in ${chalk.green(`${skyHost}:${port}`)}`);
+  debug(`Server runing in ${chalk.green(`${homeHost}:${port}`)}`);
 });

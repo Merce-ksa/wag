@@ -7,9 +7,16 @@ import { connect } from 'react-redux'
 import { login } from '../../redux/actions/userActions'
 import Hero from '../../components/Hero/Hero'
 
-function Register ({ actions }) {
+function Login ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+
+  // console.log(user)
+  if (user.status === 200) {
+    navigation.navigate('Home')
+  } else if (user.status === 500) {
+    alert('No se ha encontrado el usuario')
+  }
 
   return (
     <View style={loginStyles.container}>
@@ -27,7 +34,7 @@ function Register ({ actions }) {
           placeholderTextColor = "#7B7F9E"
           autoCapitalize = "none"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChangeText={(textValue) => setEmail(textValue)}
         />
         <TextInput
           style = {loginStyles.input}
@@ -37,14 +44,14 @@ function Register ({ actions }) {
           secureTextEntry={true}
           autoCapitalize = "none"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChangeText={(textValue) => setPassword(textValue)}
           >
         </TextInput>
 
         <TouchableOpacity
           style = {loginStyles.submitButton}
-          onPress={() => actions.register(email, password)}
-          disabled={!email || !password}
+          onPress={() => actions.login(email, password)}
+          // disabled={!email || !password}
         >
           <Text style = {loginStyles.submitButtonText}> Send </Text>
         </TouchableOpacity>
@@ -52,6 +59,12 @@ function Register ({ actions }) {
 
     </View>
   )
+}
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
 }
 
 function mapDispatchToProps (dispatch) {
@@ -62,4 +75,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

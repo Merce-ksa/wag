@@ -1,6 +1,7 @@
 const initialState = {
-  // user: [],
-  statusRegister: {}
+  user: [],
+  statusRegister: {},
+  groups: []
 }
 
 export default initialState
