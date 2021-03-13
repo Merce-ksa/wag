@@ -1,86 +1,48 @@
-import React from 'react'
-import { Text, View, StyleSheet, StatusBar, ScrollView, TouchableOpacity } from 'react-native'
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import loadGroups from '../../redux/actions/groupsActions'
+import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
+import homeStyles from './HomeStyles'
 
-const homeStyles = StyleSheet.create({
-  HomeContainer: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: '#FAFAFA'
-  },
-  title: {
-    marginTop: 50,
-    marginBottom: 50,
-    fontSize: 24,
-    textAlign: 'left',
-    fontWeight: '400'
-  },
-  cardContent: {
-    height: 60,
-    marginTop: 10,
-    justifyContent: 'center',
-    marginBottom: 10,
-    backgroundColor: '#BBCBFB',
-    borderLeftColor: '#567DF4',
-    borderLeftWidth: 8,
-    borderTopEndRadius: 10,
-    borderBottomEndRadius: 10
-  },
-  card: {
-    fontSize: 20,
-    paddingLeft: 10
-  },
-  floatButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#22215B',
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  textFloatButton: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold'
-  }
-})
+function Home ({ groups, user, actions }) {
+  console.log('info que llega a home del user:')
+  console.log(user)
+  console.log('grupos que llegan a la home:')
+  console.log(groups)
+  console.log(actions)
 
-export default function Home () {
+  useEffect(() => {
+    console.log('merche')
+    console.log(actions)
+    actions.loadGroups()
+  }, [])
+
   return (
         <View style={homeStyles.HomeContainer}>
+          <View style={homeStyles.homeTitleContent}>
+          <Image
+            source={require('../../assets/images/wag-icon.png')}
+            style={homeStyles.wagIcon}
+          />
             <Text style={homeStyles.title}>My Groups</Text>
-            <ScrollView>
-                <View style={homeStyles.cardContent}>
-                    <Text style={homeStyles.card}>
-                        My First group
-                    </Text>
-                </View>
-                <View style={homeStyles.cardContent}>
-                    <Text style={homeStyles.card}>
-                        Skylab 202101
-                    </Text>
-                </View>
-                <View style={homeStyles.cardContent}>
-                    <Text style={homeStyles.card}>
-                        Personal Links
-                    </Text>
-                </View>
-                <View style={homeStyles.cardContent}>
-                    <Text style={homeStyles.card}>
-                        Mesenterio
-                    </Text>
-                </View>
-                <View style={homeStyles.cardContent}>
-                    <Text style={homeStyles.card}>
-                        aTríviate
-                    </Text>
-                </View>
+            <Text>Bienvenido {user.data.email}</Text>
+          </View>
+                {groups && groups.map((group) => (
+                    <ScrollView key="groupsContainer">
+                        <TouchableOpacity key={group.name} style={homeStyles.cardContent}>
+                            <Text style={homeStyles.card}>
+                                {group.name}
+                            </Text>
+                            <Text style={homeStyles.cardDate}>
+                                {group.date}
+                            </Text>
+                        </TouchableOpacity>
+                    </ScrollView>
+                ))
+                }
 
-            </ScrollView>
             <View style={homeStyles.floatButton}>
                 <TouchableOpacity
                     disabled
@@ -89,8 +51,22 @@ export default function Home () {
                     <Text style={homeStyles.textFloatButton}>+</Text>
                 </TouchableOpacity>
             </View>
-
         </View>
-
   )
 }
+
+function mapStateToProps (state) {
+  console.log(state.groups)
+  return {
+    groups: state.groups,
+    user: state.user
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators({ loadGroups }, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
