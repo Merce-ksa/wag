@@ -34,9 +34,16 @@ function Auth() {
     res.json(req.body);
   }
 
+  function logout(req, res) {
+    req.logout();
+    res.status(200);
+    res.send();
+  }
+
   return {
     register,
-    login
+    login,
+    logout
   };
 }
 

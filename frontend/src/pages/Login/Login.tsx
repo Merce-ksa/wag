@@ -11,11 +11,9 @@ function Login ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  // console.log(user)
-  if (user.status === 200) {
-    navigation.navigate('Home')
-  } else if (user.status === 500) {
-    alert('No se ha encontrado el usuario')
+  console.log(user)
+  if (user && user.email) {
+    navigation.replace('Home')
   }
 
   return (

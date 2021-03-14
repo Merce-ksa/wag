@@ -23,14 +23,11 @@ export default StyleSheet.create({
     marginBottom: 50,
     textAlign: 'left',
     fontSize: 24,
-    fontFamily: 'InterRegular',
+    // fontFamily: 'InterRegular',
     fontWeight: '400'
   },
   cardContent: {
     height: 60,
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
@@ -46,7 +43,6 @@ export default StyleSheet.create({
   },
   cardDate: {
     paddingLeft: 10,
-    // paddingRight: 10,
     fontSize: 14,
     fontWeight: 'bold',
     color: '#7B7F9E'

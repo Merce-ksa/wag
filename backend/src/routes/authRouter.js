@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const passport = require('passport');
-const { register, login } = require('../controllers/authController');
+const { register, login, logout } = require('../controllers/authController');
 
 function AuthRouter() {
   const router = new Router();
@@ -13,6 +13,10 @@ function AuthRouter() {
     .post(
       passport.authenticate('local'), login
     );
+
+  router
+    .route('/logout')
+    .post(logout);
 
   return router;
 }

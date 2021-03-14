@@ -7,7 +7,7 @@ const homeHost = 'http://192.168.1.26:5000'
 export default function loadGroups () {
   return async (dispatch) => {
     try {
-      const allGroups = await axios.get(`${homeHost}/groups`)
+      const allGroups = await axios.get(`${homeHost}/groups`, { withCredentials: true })
 
       dispatch({
         type: groupActionsTypes.LOAD_GROUPS,

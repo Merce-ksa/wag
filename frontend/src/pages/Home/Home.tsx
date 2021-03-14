@@ -2,22 +2,24 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { loadUser, logout } from '../../redux/actions/userActions'
 import loadGroups from '../../redux/actions/groupsActions'
 import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
 import homeStyles from './HomeStyles'
 
-function Home ({ groups, user, actions }) {
-  console.log('info que llega a home del user:')
-  console.log(user)
-  console.log('grupos que llegan a la home:')
-  console.log(groups)
-  console.log(actions)
-
+function Home ({ groups, user, actions, navigation }) {
+  // console.log(user)
   useEffect(() => {
-    console.log('merche')
-    console.log(actions)
+    // console.log('merche')
+    // console.log(actions)
     actions.loadGroups()
   }, [])
+
+  console.log(user)
+  if (!user.email) {
+    console.log('entro')
+    navigation.navigate('Auth')
+  }
 
   return (
         <View style={homeStyles.HomeContainer}>
@@ -27,21 +29,27 @@ function Home ({ groups, user, actions }) {
             style={homeStyles.wagIcon}
           />
             <Text style={homeStyles.title}>My Groups</Text>
-            <Text>Bienvenido {user.data.email}</Text>
+
+            <TouchableOpacity
+              onPress={() => actions.logout()}
+            >
+              <Text>Log out</Text>
+            </TouchableOpacity>
           </View>
+          <Text>Bienvenido {user.email}</Text>
+          <ScrollView key="groupsContainer">
                 {groups && groups.map((group) => (
-                    <ScrollView key="groupsContainer">
-                        <TouchableOpacity key={group.name} style={homeStyles.cardContent}>
-                            <Text style={homeStyles.card}>
-                                {group.name}
-                            </Text>
-                            <Text style={homeStyles.cardDate}>
-                                {group.date}
-                            </Text>
-                        </TouchableOpacity>
-                    </ScrollView>
-                ))
-                }
+                  <TouchableOpacity key={group.name} style={homeStyles.cardContent}>
+                      <Text style={homeStyles.card}>
+                          {group.name}
+                      </Text>
+                      <Text style={homeStyles.cardDate}>
+                          {group.date}
+                      </Text>
+                  </TouchableOpacity>
+
+                ))}
+              </ScrollView>
 
             <View style={homeStyles.floatButton}>
                 <TouchableOpacity
@@ -56,6 +64,7 @@ function Home ({ groups, user, actions }) {
 }
 
 function mapStateToProps (state) {
+  console.log(state)
   console.log(state.groups)
   return {
     groups: state.groups,
@@ -65,7 +74,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators({ loadGroups }, dispatch)
+    actions: bindActionCreators({ loadGroups, logout, loadUser }, dispatch)
   }
 }
 
