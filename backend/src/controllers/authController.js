@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 
 function Auth() {
   function register(req, res) {
-    const { email, password } = req.body;
+    const { userName, email, password } = req.body;
     const [month, day, year] = new Date().toLocaleDateString('en-US').split('/');
 
     User.findOne({ email }, (error, user) => {
@@ -12,6 +12,7 @@ function Auth() {
         res.status(203);
       } else {
         const newUser = new User({
+          userName,
           email,
           password: md5(password),
           registeredAt: [year, month, day]
