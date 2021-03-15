@@ -4,7 +4,6 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const { connect } = require('mongoose');
 const cors = require('cors');
-const session = require('express-session');
 
 const authRouter = require('./src/routes/authRouter');
 const userRouter = require('./src/routes/userRouter');
@@ -24,13 +23,13 @@ connect(
   }
 );
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:19006' }));
+
 app.use(express.json());
 app.use(morgan('dev'));
+app.disable('etag');
 
 require('./src/passport')(app);
-
-app.use(session({ secret: 'wag directory' }));
 
 app.use('/auth', authRouter);
 app.use('/user', userRouter);

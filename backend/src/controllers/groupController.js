@@ -28,7 +28,7 @@ function GroupController() {
   }
 
   function getAllGroups(req, res) {
-    const query = {};
+    const query = { members: req.user.email };
 
     Group.find(query, (error, groups) => {
       if (error) {

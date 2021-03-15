@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const ensureLogin = require('connect-ensure-login');
 const { getAllGroups, createGroup } = require('../controllers/groupController');
 
 function GroupRouter() {
@@ -6,7 +7,7 @@ function GroupRouter() {
 
   router
     .route('/')
-    .get(getAllGroups)
+    .get(ensureLogin.ensureLoggedIn(), getAllGroups)
     .post(createGroup);
 
   return router;
