@@ -1,7 +1,12 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line react/prop-types
 import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableOpacity, Alert } from 'react-native'
+import {
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Alert
+} from 'react-native'
+import PropTypes from 'prop-types'
 import registerStyles from './RegisterStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -9,13 +14,12 @@ import { register } from '../../redux/actions/userActions'
 import Hero from '../../components/Hero/Hero'
 
 function Register ({ actions, statusRegister, navigation }) {
+  const [userName, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  console.log(statusRegister.status)
-
   if (statusRegister.status === 200) {
-    navigation.navigate('Home', { name: 'Home' })
+    navigation.replace('Auth')
   } else if (statusRegister.status === 500) {
     Alert.alert(
       'Error 500',
@@ -36,6 +40,16 @@ function Register ({ actions, statusRegister, navigation }) {
       </View>
 
       <View style={registerStyles.formContainer}>
+      <TextInput
+          style = {registerStyles.input}
+          underlineColorAndroid = "transparent"
+          placeholder = "Name"
+          placeholderTextColor = "#7B7F9E"
+          autoCapitalize = "none"
+          value={userName}
+          onChangeText={(textValue) => setName(textValue)}
+        />
+
         <TextInput
           style = {registerStyles.input}
           underlineColorAndroid = "transparent"
@@ -43,7 +57,7 @@ function Register ({ actions, statusRegister, navigation }) {
           placeholderTextColor = "#7B7F9E"
           autoCapitalize = "none"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChangeText={(textValue) => setEmail(textValue)}
         />
 
         <TextInput
@@ -54,8 +68,8 @@ function Register ({ actions, statusRegister, navigation }) {
           secureTextEntry={true}
           autoCapitalize = "none"
           value={password}
-          onChange={(event) =>
-            setPassword(event.target.value)
+          onChangeText={(textValue) =>
+            setPassword(textValue)
           }
           >
         </TextInput>
@@ -63,7 +77,7 @@ function Register ({ actions, statusRegister, navigation }) {
         <TouchableOpacity
           style = {registerStyles.submitButton}
           disabled={!email || !password}
-          onPress={() => actions.register(email, password)}
+          onPress={() => actions.register(userName, email, password)}
         >
           <Text
             style = {registerStyles.submitButtonText}
@@ -73,6 +87,20 @@ function Register ({ actions, statusRegister, navigation }) {
 
     </View>
   )
+}
+
+Register.propTypes = {
+  actions: PropTypes.shape({
+    register: PropTypes.func.isRequired
+  }).isRequired,
+
+  statusRegister: PropTypes.shape({
+    status: PropTypes.number.isRequired
+  }).isRequired,
+
+  navigation: PropTypes.shape({
+    replace: PropTypes.func.isRequired
+  }).isRequired
 }
 
 function mapStateToProps (state) {

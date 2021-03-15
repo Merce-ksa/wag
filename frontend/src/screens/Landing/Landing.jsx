@@ -1,9 +1,10 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 import LandingStyles from './LandingStyles'
 import Hero from '../../components/Hero/Hero'
 
-export default function Landing ({ navigation }: any) {
+export default function Landing ({ navigation }) {
   return (
     <View style={LandingStyles.container}>
       <Hero />
@@ -33,4 +34,10 @@ export default function Landing ({ navigation }: any) {
 
     </View>
   )
+}
+
+Landing.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  })
 }

@@ -3,17 +3,44 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { Provider } from 'react-redux'
-import Landing from './src/pages/Landing/Landing'
-import Register from './src/pages/Register/Register'
-import Login from './src/pages/Login/Login'
-import Home from './src/pages/Home/Home'
+import SplashScreen from './src/screens/SplashScreen/SplashScreen'
+import Landing from './src/screens/Landing/Landing'
+import Register from './src/screens/Register/Register'
+import Login from './src/screens/Login/Login'
+import Home from './src/screens/Home/Home'
 import store from './src/redux/stores/configureStore'
 import { useFonts } from 'expo-font'
 import AppLoading from 'expo-app-loading'
 
 const Stack = createStackNavigator()
 
-export default function App () {
+function Auth () {
+  // Stack Navigator for Login and Sign up Screen
+  return (
+    <Stack.Navigator initialRouteName="Authentication">
+      <Stack.Screen
+        name="Landing"
+        component={Landing}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          title: 'Register',
+          headerShown: false // Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  )
+};
+
+function App () {
   const [loaded] = useFonts({
     InterBlack: require('./src/assets/fonts/Inter-Black.ttf'),
     InterBold: require('./src/assets/fonts/Inter-Bold.ttf'),
@@ -32,15 +59,30 @@ export default function App () {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{
+        <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{
           headerShown: false
         }}>
-            <Stack.Screen name="Wag" component={Landing} />
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen
+            name="SplashScreen"
+            component={SplashScreen}
+            // Hiding header for Splash Screen
+            options={{ headerShown: false }}
+          />
+            <Stack.Screen
+              name="Auth"
+              component={Auth}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              // Hiding header for Navigation Drawer
+              options={{ headerShown: false }}
+            />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   )
 }
+
+export default App
