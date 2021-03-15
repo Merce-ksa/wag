@@ -95,7 +95,7 @@ Register.propTypes = {
   }).isRequired,
 
   statusRegister: PropTypes.shape({
-    status: PropTypes.number.isRequired
+    status: PropTypes.number
   }).isRequired,
 
   navigation: PropTypes.shape({
