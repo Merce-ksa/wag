@@ -1,6 +1,11 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableOpacity } from 'react-native'
+import {
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity
+} from 'react-native'
+import PropTypes from 'prop-types'
 import loginStyles from './LoginStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -11,7 +16,6 @@ function Login ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  console.log(user)
   if (user && user.email) {
     navigation.replace('Home')
   }
@@ -49,7 +53,7 @@ function Login ({ actions, user, navigation }) {
         <TouchableOpacity
           style = {loginStyles.submitButton}
           onPress={() => actions.login(email, password)}
-          // disabled={!email || !password}
+          disabled={!email || !password}
         >
           <Text style = {loginStyles.submitButtonText}> Send </Text>
         </TouchableOpacity>
@@ -57,6 +61,20 @@ function Login ({ actions, user, navigation }) {
 
     </View>
   )
+}
+
+Login.propTypes = {
+  actions: PropTypes.shape({
+    login: PropTypes.func.isRequired
+  }).isRequired,
+
+  user: PropTypes.shape({
+    email: PropTypes.string.isRequired
+  }),
+
+  navigation: PropTypes.shape({
+    replace: PropTypes.func.isRequired
+  }).isRequired
 }
 
 function mapStateToProps (state) {

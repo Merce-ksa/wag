@@ -1,23 +1,24 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image
+} from 'react-native'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { loadUser, logout } from '../../redux/actions/userActions'
 import loadGroups from '../../redux/actions/groupsActions'
-import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
 import homeStyles from './HomeStyles'
 
 function Home ({ groups, user, actions, navigation }) {
-  // console.log(user)
   useEffect(() => {
-    // console.log('merche')
-    // console.log(actions)
     actions.loadGroups()
   }, [])
 
-  console.log(user)
   if (!user.email) {
-    console.log('entro')
     navigation.navigate('Auth')
   }
 
@@ -63,9 +64,28 @@ function Home ({ groups, user, actions, navigation }) {
   )
 }
 
+Home.propTypes = {
+  actions: PropTypes.shape({
+    loadGroups: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
+    loadUser: PropTypes.func.isRequired
+  }).isRequired,
+
+  user: PropTypes.shape({
+    email: PropTypes.string.isRequired
+  }).isRequired,
+
+  groups: PropTypes.arrayOf({
+    name: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired
+  }).isRequired,
+
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
+}
+
 function mapStateToProps (state) {
-  console.log(state)
-  console.log(state.groups)
   return {
     groups: state.groups,
     user: state.user

@@ -4,10 +4,10 @@ import AsyncStorage from '@react-native-community/async-storage'
 // const skyHost = 'http://192.168.0.33:5000'
 const homeHost = 'http://192.168.1.26:5000'
 
-export function register (email, password) {
+export function register (userName, email, password) {
   return async (dispatch) => {
     try {
-      const statusRegister = await axios.post(`${homeHost}/auth/register`, { email, password }, { withCredentials: true })
+      const statusRegister = await axios.post(`${homeHost}/auth/register`, { userName, email, password }, { withCredentials: true })
       // console.log(statusRegister)
 
       dispatch({
