@@ -9,12 +9,12 @@ import PropTypes from 'prop-types'
 import AsyncStorage from '@react-native-community/async-storage'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { loadUser } from '../../redux/actions/userActions'
+import { loadUserFromStorage } from '../../redux/actions/userActions'
 
 function SplashScreen ({ actions, navigation }) {
   const [animating, setAnimating] = useState(true)
 
-  actions.loadUser()
+  actions.loadUserFromStorage()
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,18 +24,20 @@ function SplashScreen ({ actions, navigation }) {
           value === null ? 'Auth' : 'Home'
         )
       })
-    }, 2000)
+    }, 5000)
   }, [])
 
   return (
       <View style={splashStyles.container}>
         <Image
-          source={require('../../assets/images/wag-icon.png')}
+          source={require('../../assets/images/splash.png')}
           style={splashStyles.imageSplash}
         />
+
         <ActivityIndicator
           animating={animating}
-          color="#FFFFFF"
+          marginTop="10%"
+          color="#red"
           size="large"
           style={splashStyles.activityIndicator}
         />
@@ -45,7 +47,7 @@ function SplashScreen ({ actions, navigation }) {
 
 SplashScreen.propTypes = {
   actions: PropTypes.shape({
-    loadUser: PropTypes.func.isRequired
+    loadUserFromStorage: PropTypes.func.isRequired
   }).isRequired,
   navigation: PropTypes.shape({
     replace: PropTypes.func.isRequired
@@ -54,7 +56,7 @@ SplashScreen.propTypes = {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators({ loadUser }, dispatch)
+    actions: bindActionCreators({ loadUserFromStorage }, dispatch)
   }
 }
 

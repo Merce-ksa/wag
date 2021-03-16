@@ -5,15 +5,16 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#307ecc'
+    backgroundColor: '#CBE5E9'
   },
   activityIndicator: {
     alignItems: 'center',
-    height: 80
+    height: 80,
+    position: 'absolute'
   },
   imageSplash: {
-    width: '50%',
-    resizeMode: 'contain',
-    margin: 30
+    width: '150%',
+    height: '150%',
+    resizeMode: 'contain'
   }
 })

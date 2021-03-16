@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Landing function When is rendered Should Landing match the snapshot  1`] = `null`;

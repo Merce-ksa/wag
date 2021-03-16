@@ -9,13 +9,13 @@ import {
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { loadUser, logout } from '../../redux/actions/userActions'
+import { loadUserFromStorage, logout } from '../../redux/actions/userActions'
 import loadGroups from '../../redux/actions/groupsActions'
 import homeStyles from './HomeStyles'
 
 function Home ({ groups, user, actions, navigation }) {
   useEffect(() => {
-    actions.loadGroups()
+    actions.loadUserFromStorage()
   }, [])
 
   if (!user.email) {
@@ -37,7 +37,7 @@ function Home ({ groups, user, actions, navigation }) {
               <Text>Log out</Text>
             </TouchableOpacity>
           </View>
-          <Text>Bienvenido {user.email}</Text>
+          <Text>Hola {user.userName}!</Text>
           <ScrollView key="groupsContainer">
                 {groups && groups.map((group) => (
                   <TouchableOpacity key={group.name} style={homeStyles.cardContent}>
@@ -68,17 +68,22 @@ Home.propTypes = {
   actions: PropTypes.shape({
     loadGroups: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
-    loadUser: PropTypes.func.isRequired
+    loadUserFromStorage: PropTypes.func.isRequired
   }).isRequired,
 
   user: PropTypes.shape({
+    userName: PropTypes.string,
     email: PropTypes.string.isRequired
   }).isRequired,
 
-  groups: PropTypes.arrayOf({
+  groups: PropTypes.arrayOf(PropTypes.shape({
+    groupId: PropTypes.string.isRequired,
+    members: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+    ).isRequired,
     name: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired
-  }).isRequired,
+  })),
 
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
@@ -94,7 +99,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators({ loadGroups, logout, loadUser }, dispatch)
+    actions: bindActionCreators({ loadGroups, logout, loadUserFromStorage }, dispatch)
   }
 }
 

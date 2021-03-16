@@ -3,45 +3,49 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,
-  Alert
+  TouchableOpacity
 } from 'react-native'
+import AppLoading from 'expo-app-loading'
+import { useFonts } from 'expo-font'
 import PropTypes from 'prop-types'
-import registerStyles from './RegisterStyles'
+import formAuthStyles from '../../assets/styles/formAuthStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { register } from '../../redux/actions/userActions'
 import Hero from '../../components/Hero/Hero'
 
-function Register ({ actions, statusRegister, navigation }) {
+function Register ({ actions, user, navigation }) {
   const [userName, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  if (statusRegister.status === 200) {
-    navigation.replace('Auth')
-  } else if (statusRegister.status === 500) {
-    Alert.alert(
-      'Error 500',
-      'No se ha podido crear el usuario',
-      [
-        { text: 'OK' }
-      ],
-      { cancelable: false }
-    )
+  console.log(user)
+  if (user && user.email) {
+    navigation.replace('SplashScreen')
+  }
+
+  const [fontsLoaded] = useFonts({
+    interExtraLight: require('../../assets/fonts/Inter-ExtraLight.ttf'),
+    interSemiBold: require('../../assets/fonts/Inter-SemiBold.ttf'),
+    barlowLight: require('../../assets/fonts/BarlowSemiCondensed-Light.ttf'),
+    barlowMedium: require('../../assets/fonts/BarlowSemiCondensed-Medium.ttf')
+  })
+
+  if (!fontsLoaded) {
+    return <AppLoading />
   }
 
   return (
-    <View style={registerStyles.container}>
+    <View style={formAuthStyles.container}>
       <Hero />
 
-      <View style={registerStyles.titleContainer}>
-        <Text style={registerStyles.title}>Sing up</Text>
+      <View style={formAuthStyles.titleContainer}>
+        <Text style={[{ fontFamily: 'barlowMedium' }, formAuthStyles.title]}>Sing up</Text>
       </View>
 
-      <View style={registerStyles.formContainer}>
+      <View style={formAuthStyles.formContainer}>
       <TextInput
-          style = {registerStyles.input}
+          style = {formAuthStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Name"
           placeholderTextColor = "#7B7F9E"
@@ -51,7 +55,7 @@ function Register ({ actions, statusRegister, navigation }) {
         />
 
         <TextInput
-          style = {registerStyles.input}
+          style = {formAuthStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Email"
           placeholderTextColor = "#7B7F9E"
@@ -61,7 +65,7 @@ function Register ({ actions, statusRegister, navigation }) {
         />
 
         <TextInput
-          style = {registerStyles.input}
+          style = {formAuthStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Password"
           placeholderTextColor = "#7B7F9E"
@@ -75,12 +79,12 @@ function Register ({ actions, statusRegister, navigation }) {
         </TextInput>
 
         <TouchableOpacity
-          style = {registerStyles.submitButton}
+          style = {formAuthStyles.submitButton}
           disabled={!email || !password}
           onPress={() => actions.register(userName, email, password)}
         >
           <Text
-            style = {registerStyles.submitButtonText}
+            style = {[{ fontFamily: 'interSemiBold' }, formAuthStyles.submitButtonText]}
           > Create account </Text>
         </TouchableOpacity>
       </View>
@@ -94,9 +98,10 @@ Register.propTypes = {
     register: PropTypes.func.isRequired
   }).isRequired,
 
-  statusRegister: PropTypes.shape({
-    status: PropTypes.number
-  }).isRequired,
+  user: PropTypes.shape({
+    email: PropTypes.string,
+    userName: PropTypes.string
+  }),
 
   navigation: PropTypes.shape({
     replace: PropTypes.func.isRequired
@@ -105,7 +110,7 @@ Register.propTypes = {
 
 function mapStateToProps (state) {
   console.log(state)
-  return { statusRegister: state.statusRegister }
+  return { user: state.user }
 }
 
 function mapDispatchToProps (dispatch) {
