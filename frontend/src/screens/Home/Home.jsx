@@ -16,11 +16,14 @@ import homeStyles from './HomeStyles'
 function Home ({ groups, user, actions, navigation }) {
   useEffect(() => {
     actions.loadUserFromStorage()
+    actions.loadGroups()
   }, [])
 
   if (!user.email) {
     navigation.navigate('Auth')
   }
+
+  console.log(groups)
 
   return (
         <View style={homeStyles.HomeContainer}>
@@ -54,8 +57,7 @@ function Home ({ groups, user, actions, navigation }) {
 
             <View style={homeStyles.floatButton}>
                 <TouchableOpacity
-                    disabled
-                    onPress={() => console.log('holi')}
+                    onPress={() => navigation.navigate('CreateGroup')}
                 >
                     <Text style={homeStyles.textFloatButton}>+</Text>
                 </TouchableOpacity>

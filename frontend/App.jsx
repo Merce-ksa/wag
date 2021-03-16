@@ -9,6 +9,7 @@ import Landing from './src/screens/Landing/Landing'
 import Register from './src/screens/Register/Register'
 import Login from './src/screens/Login/Login'
 import Home from './src/screens/Home/Home'
+import CreateGroup from './src/screens/CreateGroup/CreateGoup'
 
 const Stack = createStackNavigator()
 
@@ -38,6 +39,24 @@ function Auth () {
   )
 }
 
+function WagApp () {
+  return (
+    <Stack.Navigator initialRouteName="WagApp">
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        // Hiding header for Navigation Drawer
+        options={{ headerShown: false }}
+      />
+    <Stack.Screen
+      name="CreateGroup"
+      component={CreateGroup}
+      options={{ headerShown: false }}
+    />
+  </Stack.Navigator>
+  )
+}
+
 function App () {
   return (
       <Provider store={store}>
@@ -55,9 +74,10 @@ function App () {
               component={Auth}
               options={{ headerShown: false }}
             />
+
             <Stack.Screen
-              name="Home"
-              component={Home}
+              name="WagApp"
+              component={WagApp}
               // Hiding header for Navigation Drawer
               options={{ headerShown: false }}
             />

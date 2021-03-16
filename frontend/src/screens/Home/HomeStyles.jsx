@@ -1,4 +1,8 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import {
+  StyleSheet,
+  StatusBar
+} from 'react-native'
+
 export default StyleSheet.create({
   HomeContainer: {
     flex: 1,
@@ -23,7 +27,6 @@ export default StyleSheet.create({
     marginBottom: 50,
     textAlign: 'left',
     fontSize: 24,
-    // fontFamily: 'InterRegular',
     fontWeight: '400'
   },
   cardContent: {
@@ -56,7 +59,16 @@ export default StyleSheet.create({
     bottom: 20,
     right: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 4
   },
   textFloatButton: {
     color: '#fff',
