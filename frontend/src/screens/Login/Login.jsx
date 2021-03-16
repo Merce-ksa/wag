@@ -19,7 +19,7 @@ function Login ({ actions, user, navigation }) {
   const [password, setPassword] = useState()
 
   if (user && user.email) {
-    navigation.replace('Home')
+    navigation.replace('WagApp')
   }
 
   const [fontsLoaded] = useFonts({
