@@ -1,12 +1,12 @@
 const { Router } = require('express');
-const { registerUser } = require('../controllers/userController');
+const { userInfo } = require('../controllers/userController');
 
 function UserRouter() {
   const router = Router();
 
   router
-    .route('/')
-    .post(registerUser);
+    .route('/me')
+    .get(userInfo);
 
   return router;
 }

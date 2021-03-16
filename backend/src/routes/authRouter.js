@@ -6,7 +6,8 @@ function AuthRouter() {
   const router = new Router();
 
   router
-    .post('/register', register);
+    .route('/register')
+    .post(register);
 
   router
     .route('/login')

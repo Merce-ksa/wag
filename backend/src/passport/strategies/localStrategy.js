@@ -12,7 +12,6 @@ function LocalStrategy() {
       (email, password, done) => {
         User.findOne({ email }, (err, user) => {
           if (err) {
-            console.log(`si no lo encuentra: ${err}`);
             return done(err);
           }
           if (!user) {

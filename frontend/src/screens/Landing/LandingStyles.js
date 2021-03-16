@@ -4,22 +4,24 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
-  welcome: {
-    padding: 5,
+  landingMain: {
+    marginTop: 40,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
+  subtitle: {
     textAlign: 'left',
     fontSize: 20,
     color: 'black'
   },
-  brand: {
+  title: {
+    paddingBottom: 5,
     textAlign: 'left',
-    padding: 5,
-    fontSize: 38
+    fontSize: 65
   },
   description: {
     textAlign: 'left',
     fontSize: 14,
-    fontWeight: 'bold',
-    padding: 5,
     color: '#7B7F9E'
   },
   autenticationContainer: {
@@ -30,8 +32,8 @@ export default StyleSheet.create({
     marginRight: 10
   },
   loginText: {
-    color: '#567DF4',
-    fontWeight: 'bold'
+    fontSize: 16,
+    color: '#567DF4'
   },
   register: {
     height: 40,
@@ -42,9 +44,10 @@ export default StyleSheet.create({
     backgroundColor: '#567DF4'
   },
   registerTetx: {
-    color: '#fff',
-    textAlign: 'center',
+    padding: 20,
+    fontFamily: 'interSemiBold',
     fontSize: 18,
-    padding: 20
+    color: '#fff',
+    textAlign: 'center'
   }
 })

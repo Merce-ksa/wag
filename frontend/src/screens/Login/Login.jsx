@@ -5,8 +5,10 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native'
+import AppLoading from 'expo-app-loading'
+import { useFonts } from 'expo-font'
 import PropTypes from 'prop-types'
-import loginStyles from './LoginStyles'
+import formAuthStyles from '../../assets/styles/formAuthStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { login } from '../../redux/actions/userActions'
@@ -20,17 +22,28 @@ function Login ({ actions, user, navigation }) {
     navigation.replace('Home')
   }
 
+  const [fontsLoaded] = useFonts({
+    interExtraLight: require('../../assets/fonts/Inter-ExtraLight.ttf'),
+    interSemiBold: require('../../assets/fonts/Inter-SemiBold.ttf'),
+    barlowLight: require('../../assets/fonts/BarlowSemiCondensed-Light.ttf'),
+    barlowMedium: require('../../assets/fonts/BarlowSemiCondensed-Medium.ttf')
+  })
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
+
   return (
-    <View style={loginStyles.container}>
+    <View style={formAuthStyles.container}>
       <Hero />
 
-      <View style={loginStyles.titleContainer}>
-        <Text style={loginStyles.title}>Login</Text>
+      <View style={formAuthStyles.titleContainer}>
+        <Text style={[{ fontFamily: 'barlowMedium' }, formAuthStyles.title]}>Login</Text>
       </View>
 
-      <View style={loginStyles.formContainer}>
+      <View style={formAuthStyles.formContainer}>
         <TextInput
-          style = {loginStyles.input}
+          style = {formAuthStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Email"
           placeholderTextColor = "#7B7F9E"
@@ -39,7 +52,7 @@ function Login ({ actions, user, navigation }) {
           onChangeText={(textValue) => setEmail(textValue)}
         />
         <TextInput
-          style = {loginStyles.input}
+          style = {formAuthStyles.input}
           underlineColorAndroid = "transparent"
           placeholder = "Password"
           placeholderTextColor = "#7B7F9E"
@@ -51,11 +64,11 @@ function Login ({ actions, user, navigation }) {
         </TextInput>
 
         <TouchableOpacity
-          style = {loginStyles.submitButton}
+          style = {formAuthStyles.submitButton}
           onPress={() => actions.login(email, password)}
           disabled={!email || !password}
         >
-          <Text style = {loginStyles.submitButtonText}> Send </Text>
+          <Text style={[{ fontFamily: 'interSemiBold' }, formAuthStyles.submitButtonText]}> Send </Text>
         </TouchableOpacity>
       </View>
 

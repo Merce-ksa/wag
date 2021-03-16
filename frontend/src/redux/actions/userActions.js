@@ -7,19 +7,21 @@ const homeHost = 'http://192.168.1.26:5000'
 export function register (userName, email, password) {
   return async (dispatch) => {
     try {
-      const statusRegister = await axios.post(`${homeHost}/auth/register`, { userName, email, password }, { withCredentials: true })
-      // console.log(statusRegister)
+      const user = await axios.post(`${homeHost}/auth/register`, { userName, email, password }, { withCredentials: true })
+        .then(() => axios.post(`${homeHost}/auth/login`, { email, password }, { withCredentials: true }))
+        .then(() => axios.get(`${homeHost}/user/me`, { withCredentials: true }))
+
+      AsyncStorage.setItem('user', JSON.stringify(user.data))
 
       dispatch({
         type: userActionsTypes.REGISTERED,
-        data: statusRegister
+        data: user.data
       })
     } catch {
-      const statusRegister = await axios.post(`${homeHost}/auth/register`, { email, password }, { withCredentials: true })
-      console.log(statusRegister)
+      console.log('registro fallido')
 
       dispatch({
-        type: userActionsTypes.NO_REGISTERED
+        type: userActionsTypes.REGISTERED_ERROR
       })
     }
   }
@@ -27,15 +29,21 @@ export function register (userName, email, password) {
 
 export function login (email, password) {
   return async (dispatch) => {
-    const user = await axios.post(`${homeHost}/auth/login`, { email, password }, { withCredentials: true })
-    // console.log('usuario logueado:')
-    console.log(user)
-    AsyncStorage.setItem('user', JSON.stringify(user.data))
-    console.log(user.data)
-    dispatch({
-      type: userActionsTypes.LOGIN,
-      data: user.data
-    })
+    try {
+      const user = await axios.post(`${homeHost}/auth/login`, { email, password }, { withCredentials: true })
+        .then(() => axios.get(`${homeHost}/user/me`, { withCredentials: true }))
+
+      AsyncStorage.setItem('user', JSON.stringify(user.data))
+
+      dispatch({
+        type: userActionsTypes.LOGIN,
+        data: user.data
+      })
+    } catch {
+      dispatch({
+        type: userActionsTypes.LOGIN_ERROR
+      })
+    }
   }
 }
 
@@ -50,7 +58,7 @@ export function logout () {
   }
 }
 
-export function loadUser () {
+export function loadUserFromStorage () {
   return async (dispatch) => {
     const userFromStorage = await AsyncStorage.getItem('user')
     const user = JSON.parse(userFromStorage)

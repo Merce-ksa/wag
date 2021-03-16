@@ -10,27 +10,4 @@ describe('Given a Landing function', () => {
       expect(splash).toMatchSnapshot()
     })
   })
-
-  //   describe('When clicking login button', () => {
-  //     test('Should calls the send handler', () => {
-  //       const navigation = {
-  //         navigate: jest.fn()
-  //       }
-
-  //       const { getByTestId } = render(<Landing navigation = { navigation } />)
-
-  //       fireEvent.press(getByTestId('register'))
-  //       expect(navigation.navigate).toHaveBeenCalled()
-  //     })
-  //     test('Should calls the send handler', () => {
-  //       const navigation = {
-  //         navigate: jest.fn()
-  //       }
-
-  //       const { getByTestId } = render(<Landing navigation = { navigation } />)
-
-//       fireEvent.press(getByTestId('login'))
-//       expect(navigation.navigate).toHaveBeenCalled()
-//     })
-//   })
 })

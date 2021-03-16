@@ -8,7 +8,7 @@
     "test": "jest --watchAll --collect-coverage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mercè Casamitjana",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.0",

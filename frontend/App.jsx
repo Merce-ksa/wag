@@ -40,7 +40,7 @@ function Auth () {
 
 function App () {
   return (
-    <Provider store={store}>
+      <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{
           headerShown: false
