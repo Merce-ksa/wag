@@ -16,8 +16,9 @@ export default function Landing ({ navigation }) {
 
   if (!fontsLoaded) {
     return <AppLoading />
-  } else {
-    return (
+  }
+
+  return (
     <View style={LandingStyles.landingContainer}>
       <Hero />
       <View style={LandingStyles.landingMain}>
@@ -46,8 +47,7 @@ export default function Landing ({ navigation }) {
       </View>
 
     </View>
-    )
-  }
+  )
 }
 
 Landing.propTypes = {

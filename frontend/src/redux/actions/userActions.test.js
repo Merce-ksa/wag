@@ -2,6 +2,7 @@ import userActionsTypes from './userActionsTypes'
 import axios from 'axios'
 import { loadUserFromStorage } from '../actions/userActions'
 
+jest.mock('@react-native-community/async-storage')
 jest.mock('axios')
 
 describe('Given a loadUserFromStorage function', () => {
