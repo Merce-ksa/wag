@@ -19,6 +19,7 @@ import Register from './src/screens/Register/Register'
 import Login from './src/screens/Login/Login'
 import Home from './src/screens/Home/Home'
 import CreateGroup from './src/screens/CreateGroup/CreateGoup'
+import FolderList from './src/screens/FolderList/FolderList'
 import Profile from './src/screens/Profile/Profile'
 
 const Stack = createStackNavigator()
@@ -49,14 +50,21 @@ function Auth () {
   )
 }
 
-function HomeStack () {
+function UserSpace () {
   return (
     <Stack.Navigator initialRouteName="HomeStack">
+<Stack.Screen
+        name="FolderList"
+        component={FolderList}
+        options={{ headerShown: false }}
+      />
+
       <Stack.Screen
         name="Home"
         component={Home}
         options={{ headerShown: false }}
       />
+
     <Stack.Screen
       name="CreateGroup"
       component={CreateGroup}
@@ -74,8 +82,8 @@ function WagApp () {
       activeTintColor: '#22215B'
     }}>
     <Tab.Screen
-      name="Home"
-      component={HomeStack}
+      name="UserSpace"
+      component={UserSpace}
       options={{
         tabBarLabel: 'Home',
         tabBarIcon: ({ color, size }) => (
