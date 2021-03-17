@@ -1,23 +1,10 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
-import AppLoading from 'expo-app-loading'
-import { useFonts } from 'expo-font'
 import LandingStyles from './LandingStyles'
 import PropTypes from 'prop-types'
 import Hero from '../../components/Hero/Hero'
 
 export default function Landing ({ navigation }) {
-  const [fontsLoaded] = useFonts({
-    interExtraLight: require('../../assets/fonts/Inter-ExtraLight.ttf'),
-    interBold: require('../../assets/fonts/Inter-Bold.ttf'),
-    interSemiBold: require('../../assets/fonts/Inter-SemiBold.ttf'),
-    barlowLight: require('../../assets/fonts/BarlowSemiCondensed-Light.ttf')
-  })
-
-  if (!fontsLoaded) {
-    return <AppLoading />
-  }
-
   return (
     <View style={LandingStyles.landingContainer}>
       <Hero />

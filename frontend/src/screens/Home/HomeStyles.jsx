@@ -26,7 +26,7 @@ export default StyleSheet.create({
     marginTop: 50,
     marginBottom: 50,
     textAlign: 'left',
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: '400'
   },
   cardContent: {

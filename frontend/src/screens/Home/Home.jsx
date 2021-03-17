@@ -27,19 +27,17 @@ function Home ({ groups, user, actions, navigation }) {
         <View style={homeStyles.HomeContainer}>
           <View style={homeStyles.homeTitleContent}>
           <Image
-            source={require('../../assets/images/wag-icon.png')}
+            source={require('../../assets/images/groups.png')}
             style={homeStyles.wagIcon}
           />
-            <Text style={homeStyles.title}>My Groups</Text>
+            <Text style={[{ fontFamily: 'barlowMedium' }, homeStyles.title]}>Hi {user.userName}!</Text>
 
             <TouchableOpacity
               onPress={() => navigation.navigate('Profile')}
             >
-              <Text>Profile</Text>
             </TouchableOpacity>
 
           </View>
-          <Text>Hola {user.userName}!</Text>
           <ScrollView key="groupsContainer">
                 {groups && groups.map((group) => (
                   <TouchableOpacity key={group.name} style={homeStyles.cardContent}>

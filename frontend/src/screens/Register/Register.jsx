@@ -5,8 +5,6 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native'
-import AppLoading from 'expo-app-loading'
-import { useFonts } from 'expo-font'
 import PropTypes from 'prop-types'
 import formAuthStyles from '../../assets/styles/formAuthStyles'
 import { bindActionCreators } from 'redux'
@@ -22,17 +20,6 @@ function Register ({ actions, user, navigation }) {
   console.log(user)
   if (user && user.email) {
     navigation.replace('SplashScreen')
-  }
-
-  const [fontsLoaded] = useFonts({
-    interExtraLight: require('../../assets/fonts/Inter-ExtraLight.ttf'),
-    interSemiBold: require('../../assets/fonts/Inter-SemiBold.ttf'),
-    barlowLight: require('../../assets/fonts/BarlowSemiCondensed-Light.ttf'),
-    barlowMedium: require('../../assets/fonts/BarlowSemiCondensed-Medium.ttf')
-  })
-
-  if (!fontsLoaded) {
-    return <AppLoading />
   }
 
   return (
