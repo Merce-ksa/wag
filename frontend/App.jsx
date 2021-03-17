@@ -10,11 +10,11 @@ import Register from './src/screens/Register/Register'
 import Login from './src/screens/Login/Login'
 import Home from './src/screens/Home/Home'
 import CreateGroup from './src/screens/CreateGroup/CreateGoup'
+import Profile from './src/screens/Profile/Profile'
 
 const Stack = createStackNavigator()
 
 function Auth () {
-  // Stack Navigator for Login and Sign up Screen
   return (
     <Stack.Navigator initialRouteName="Authentication">
       <Stack.Screen
@@ -32,7 +32,7 @@ function Auth () {
         component={Register}
         options={{
           title: 'Register',
-          headerShown: false // Set Header Title
+          headerShown: false
         }}
       />
     </Stack.Navigator>
@@ -45,7 +45,6 @@ function WagApp () {
       <Stack.Screen
         name="Home"
         component={Home}
-        // Hiding header for Navigation Drawer
         options={{ headerShown: false }}
       />
     <Stack.Screen
@@ -53,6 +52,12 @@ function WagApp () {
       component={CreateGroup}
       options={{ headerShown: false }}
     />
+    <Stack.Screen
+      name="Profile"
+      component={Profile}
+      options={{ headerShown: false }}
+    />
+
   </Stack.Navigator>
   )
 }
@@ -78,7 +83,6 @@ function App () {
             <Stack.Screen
               name="WagApp"
               component={WagApp}
-              // Hiding header for Navigation Drawer
               options={{ headerShown: false }}
             />
         </Stack.Navigator>

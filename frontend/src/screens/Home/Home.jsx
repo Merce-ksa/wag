@@ -23,8 +23,6 @@ function Home ({ groups, user, actions, navigation }) {
     navigation.navigate('Auth')
   }
 
-  console.log(groups)
-
   return (
         <View style={homeStyles.HomeContainer}>
           <View style={homeStyles.homeTitleContent}>
@@ -35,10 +33,11 @@ function Home ({ groups, user, actions, navigation }) {
             <Text style={homeStyles.title}>My Groups</Text>
 
             <TouchableOpacity
-              onPress={() => actions.logout()}
+              onPress={() => navigation.navigate('Profile')}
             >
-              <Text>Log out</Text>
+              <Text>Profile</Text>
             </TouchableOpacity>
+
           </View>
           <Text>Hola {user.userName}!</Text>
           <ScrollView key="groupsContainer">
@@ -69,7 +68,6 @@ function Home ({ groups, user, actions, navigation }) {
 Home.propTypes = {
   actions: PropTypes.shape({
     loadGroups: PropTypes.func.isRequired,
-    logout: PropTypes.func.isRequired,
     loadUserFromStorage: PropTypes.func.isRequired
   }).isRequired,
 
