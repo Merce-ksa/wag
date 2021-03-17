@@ -21,10 +21,10 @@ function SplashScreen ({ actions, navigation }) {
       setAnimating(false)
       AsyncStorage.getItem('user').then((value) => {
         navigation.replace(
-          value === null ? 'Auth' : 'Home'
+          value === null ? 'Auth' : 'WagApp'
         )
       })
-    }, 5000)
+    }, 1000)
   }, [])
 
   return (

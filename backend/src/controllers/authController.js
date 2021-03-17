@@ -15,7 +15,8 @@ function Auth() {
           userName,
           email,
           password: md5(password),
-          registeredAt: [year, month, day]
+          registeredAt: [year, month, day],
+          photoURL: `https://avatars.dicebear.com/api/gridy/${userName}/custom-happy.svg?colorful=1`
         });
 
         try {

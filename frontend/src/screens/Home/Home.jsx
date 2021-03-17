@@ -16,6 +16,7 @@ import homeStyles from './HomeStyles'
 function Home ({ groups, user, actions, navigation }) {
   useEffect(() => {
     actions.loadUserFromStorage()
+    actions.loadGroups()
   }, [])
 
   if (!user.email) {
@@ -26,18 +27,17 @@ function Home ({ groups, user, actions, navigation }) {
         <View style={homeStyles.HomeContainer}>
           <View style={homeStyles.homeTitleContent}>
           <Image
-            source={require('../../assets/images/wag-icon.png')}
+            source={require('../../assets/images/groups.png')}
             style={homeStyles.wagIcon}
           />
-            <Text style={homeStyles.title}>My Groups</Text>
+            <Text style={[{ fontFamily: 'barlowMedium' }, homeStyles.title]}>Hi {user.userName}!</Text>
 
             <TouchableOpacity
-              onPress={() => actions.logout()}
+              onPress={() => navigation.navigate('Profile')}
             >
-              <Text>Log out</Text>
             </TouchableOpacity>
+
           </View>
-          <Text>Hola {user.userName}!</Text>
           <ScrollView key="groupsContainer">
                 {groups && groups.map((group) => (
                   <TouchableOpacity key={group.name} style={homeStyles.cardContent}>
@@ -54,8 +54,7 @@ function Home ({ groups, user, actions, navigation }) {
 
             <View style={homeStyles.floatButton}>
                 <TouchableOpacity
-                    disabled
-                    onPress={() => console.log('holi')}
+                    onPress={() => navigation.navigate('CreateGroup')}
                 >
                     <Text style={homeStyles.textFloatButton}>+</Text>
                 </TouchableOpacity>
@@ -67,7 +66,6 @@ function Home ({ groups, user, actions, navigation }) {
 Home.propTypes = {
   actions: PropTypes.shape({
     loadGroups: PropTypes.func.isRequired,
-    logout: PropTypes.func.isRequired,
     loadUserFromStorage: PropTypes.func.isRequired
   }).isRequired,
 

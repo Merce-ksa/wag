@@ -4,22 +4,22 @@ import {
 } from 'react-native'
 
 export default StyleSheet.create({
-  HomeContainer: {
+  container: {
     flex: 1,
     marginTop: StatusBar.currentHeight,
     paddingLeft: 20,
     paddingRight: 20,
     backgroundColor: '#FAFAFA'
   },
-  homeTitleContent: {
+  titleContent: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
-  wagIcon: {
+  sectionIcon: {
     resizeMode: 'contain',
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     marginRight: 10
   },
   title: {
@@ -28,27 +28,6 @@ export default StyleSheet.create({
     textAlign: 'left',
     fontSize: 30,
     fontWeight: '400'
-  },
-  cardContent: {
-    height: 60,
-    justifyContent: 'center',
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#BBCBFB',
-    borderLeftColor: '#567DF4',
-    borderLeftWidth: 8,
-    borderTopEndRadius: 10,
-    borderBottomEndRadius: 10
-  },
-  card: {
-    paddingLeft: 10,
-    fontSize: 20
-  },
-  cardDate: {
-    paddingLeft: 10,
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#7B7F9E'
   },
   floatButton: {
     width: 60,
