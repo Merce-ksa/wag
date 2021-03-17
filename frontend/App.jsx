@@ -20,6 +20,7 @@ import Login from './src/screens/Login/Login'
 import Home from './src/screens/Home/Home'
 import CreateGroup from './src/screens/CreateGroup/CreateGoup'
 import FolderList from './src/screens/FolderList/FolderList'
+import Links from './src/screens/Links/Links'
 import Profile from './src/screens/Profile/Profile'
 
 const Stack = createStackNavigator()
@@ -53,23 +54,29 @@ function Auth () {
 function UserSpace () {
   return (
     <Stack.Navigator initialRouteName="HomeStack">
-<Stack.Screen
-        name="FolderList"
-        component={FolderList}
-        options={{ headerShown: false }}
-      />
-
       <Stack.Screen
         name="Home"
         component={Home}
         options={{ headerShown: false }}
       />
 
-    <Stack.Screen
-      name="CreateGroup"
-      component={CreateGroup}
-      options={{ headerShown: false }}
-    />
+      <Stack.Screen
+        name="FolderList"
+        component={FolderList}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="Links"
+        component={Links}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="CreateGroup"
+        component={CreateGroup}
+        options={{ headerShown: false }}
+      />
   </Stack.Navigator>
   )
 }
