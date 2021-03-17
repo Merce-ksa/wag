@@ -37,7 +37,7 @@ export default StyleSheet.create({
     height: 200,
     borderRadius: 100,
     backgroundColor: '#EEF7FE',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center'
   },
   avatar: {

@@ -9,9 +9,11 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native'
+import { SvgUri } from 'react-native-svg'
 import ProfileStyles from './ProfileStyles'
 
 function Profile ({ user, actions }) {
+  console.log(user.photoURL)
   return (
     <View style= {ProfileStyles.container}>
         <View style={ProfileStyles.profileTitleContent}>
@@ -19,16 +21,17 @@ function Profile ({ user, actions }) {
             <Text style={ProfileStyles.title}>Profile</Text>
 
             <TouchableOpacity onPress={() => actions.logout()}>
-                <Image source= {require('../../assets/images/logout.png')}
-                style={ProfileStyles.logout} />
+                <Image
+                  source= {require('../../assets/images/logout.png')}
+                  style={ProfileStyles.logout}
+                />
             </TouchableOpacity>
       </View>
       <View style={ProfileStyles.mainContent}>
           <View style={ProfileStyles.avatarContent}>
-
-            <Image
-                source= {require('../../assets/images/user.png')}
-                style={ProfileStyles.avatar}
+            <SvgUri
+              style={ProfileStyles.avatar}
+              uri= {user.photoURL}
             />
           </View>
           <View style={ProfileStyles.userNameContent}>
@@ -54,7 +57,8 @@ Profile.propTypes = {
   user: PropTypes.shape({
     userName: PropTypes.string,
     email: PropTypes.string.isRequired,
-    description: PropTypes.string
+    description: PropTypes.string,
+    photoURL: PropTypes.string.isRequired
   }).isRequired,
 
   actions: PropTypes.shape({
