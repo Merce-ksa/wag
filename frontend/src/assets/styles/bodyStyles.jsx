@@ -30,9 +30,9 @@ export default StyleSheet.create({
     fontWeight: '400'
   },
   floatButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     backgroundColor: '#22215B',
     position: 'absolute',
     bottom: 20,
@@ -44,14 +44,13 @@ export default StyleSheet.create({
       width: 0,
       height: 2
     },
-    shadowOpacity: 0.23,
+    shadowOpacity: 0.63,
     shadowRadius: 2.62,
 
-    elevation: 4
+    elevation: 6
   },
-  textFloatButton: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold'
+  imageFloatButton: {
+    width: 60,
+    height: 60
   }
 })

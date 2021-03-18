@@ -2,7 +2,6 @@ import React from 'react'
 import { Text, View, TouchableOpacity, Image } from 'react-native'
 import LandingStyles from './LandingStyles'
 import PropTypes from 'prop-types'
-// import Hero from '../../components/Hero/Hero'
 
 export default function Landing ({ navigation }) {
   return (
