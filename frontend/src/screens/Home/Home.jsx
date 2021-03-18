@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux'
 import { loadUserFromStorage, logout } from '../../redux/actions/userActions'
 import loadGroups from '../../redux/actions/groupsActions'
 import homeStyles from './HomeStyles'
+import bodyStyles from '../../assets/styles/bodyStyles'
 
 function Home ({ groups, user, actions, navigation }) {
   useEffect(() => {
@@ -52,11 +53,14 @@ function Home ({ groups, user, actions, navigation }) {
                 ))}
               </ScrollView>
 
-            <View style={homeStyles.floatButton}>
+            <View style={bodyStyles.floatButton}>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('CreateGroup')}
                 >
-                    <Text style={homeStyles.textFloatButton}>+</Text>
+                    <Image
+                      style={bodyStyles.imageFloatButton}
+                      source={require('../../assets/images/new-link.png')}
+                    />
                 </TouchableOpacity>
             </View>
         </View>

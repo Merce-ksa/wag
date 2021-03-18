@@ -49,7 +49,10 @@ export default function Links ({ navigation }) {
                 <TouchableOpacity
                     onPress={() => navigation.navigate('CreateGroup')}
                 >
-                    <Text style={bodyStyles.textFloatButton}>+</Text>
+                  <Image
+                    style={bodyStyles.imageFloatButton}
+                    source={require('../../assets/images/new-link.png')}
+                  />
                 </TouchableOpacity>
             </View>
           </View>

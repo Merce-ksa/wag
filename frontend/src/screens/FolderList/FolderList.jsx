@@ -38,7 +38,10 @@ export default function FolderList ({ navigation }) {
                   <TouchableOpacity
                       onPress={() => navigation.navigate('CreateGroup')}
                   >
-                      <Text style={bodyStyles.textFloatButton}>+</Text>
+                    <Image
+                      style={bodyStyles.imageFloatButton}
+                      source={require('../../assets/images/new-link.png')}
+                    />
                   </TouchableOpacity>
               </View>
           </View>
