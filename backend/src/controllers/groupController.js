@@ -12,7 +12,7 @@ function GroupController() {
 
     const newGroup = new Group({
       groupId: generateId(),
-      members: [members],
+      members,
       name,
       date: new Date().toDateString()
     });
@@ -31,13 +31,8 @@ function GroupController() {
     const query = { members: req.user.email };
 
     Group.find(query, (error, groups) => {
-      if (error) {
-        res.status(500);
-        res.send('There was an error finding groups');
-      } else {
-        res.status(200);
-        res.json(groups);
-      }
+      res.status(200);
+      res.json(groups);
     });
   }
   return {
