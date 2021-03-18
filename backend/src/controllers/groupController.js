@@ -31,8 +31,13 @@ function GroupController() {
     const query = { members: req.user.email };
 
     Group.find(query, (error, groups) => {
-      res.status(200);
-      res.json(groups);
+      if (error) {
+        res.send();
+        res.status(500);
+      } else {
+        res.status(200);
+        res.json(groups);
+      }
     });
   }
   return {
