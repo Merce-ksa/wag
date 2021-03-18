@@ -2,8 +2,8 @@ import axios from 'axios'
 import userActionsTypes from './userActionsTypes'
 import AsyncStorage from '@react-native-community/async-storage'
 // const skyHost = 'http://192.168.0.33:5000'
-// const host = 'http://192.168.0.33:5000'
-const host = 'http://192.168.1.26:5000'
+const host = 'http://192.168.0.33:5000'
+// const host = 'http://192.168.1.26:5000'
 
 export function register (userName, email, password) {
   return async (dispatch) => {

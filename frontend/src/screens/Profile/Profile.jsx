@@ -13,7 +13,8 @@ import { SvgUri } from 'react-native-svg'
 import ProfileStyles from './ProfileStyles'
 
 function Profile ({ user, actions }) {
-  console.log(user.photoURL)
+  console.log('Entra en profile el usuario:')
+  console.log(user)
   return (
     <View style= {ProfileStyles.container}>
         <View style={ProfileStyles.profileTitleContent}>
@@ -56,9 +57,9 @@ function Profile ({ user, actions }) {
 Profile.propTypes = {
   user: PropTypes.shape({
     userName: PropTypes.string,
-    email: PropTypes.string.isRequired,
+    email: PropTypes.string,
     description: PropTypes.string,
-    photoURL: PropTypes.string.isRequired
+    photoURL: PropTypes.string
   }).isRequired,
 
   actions: PropTypes.shape({

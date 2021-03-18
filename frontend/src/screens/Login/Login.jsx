@@ -17,7 +17,7 @@ function Login ({ actions, user, navigation }) {
   const [password, setPassword] = useState()
 
   if (user && user.email) {
-    navigation.replace('WagApp')
+    navigation.navigate('WagApp')
   }
 
   return (
@@ -73,7 +73,7 @@ Login.propTypes = {
   }),
 
   navigation: PropTypes.shape({
-    replace: PropTypes.func.isRequired
+    navigate: PropTypes.func.isRequired
   }).isRequired
 }
 
