@@ -33,8 +33,8 @@ function FolderController() {
 
     Folder.find(query, (error, folders) => {
       if (error) {
-        res.send(error);
         res.status(500);
+        res.send(error);
       } else {
         res.status(200);
         res.json(folders);
