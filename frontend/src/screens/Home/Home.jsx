@@ -64,7 +64,7 @@ function Home ({ groups, user, actions, navigation }) {
 
             <View style={bodyStyles.floatButton}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('CreateGroup')}
+                    onPress={() => navigation.navigate('NewLink')}
                 >
                     <Image
                       style={bodyStyles.imageFloatButton}
