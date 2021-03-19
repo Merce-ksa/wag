@@ -1,70 +1,93 @@
-const supertest = require('supertest');
-const md5 = require('md5');
-const User = require('../models/userModel');
 const Group = require('../models/groupModel');
-const app = require('../../server');
+const groupController = require('./groupController');
 
-describe('Given a /groups endpoint', () => {
-  test('Should get empty groups when user does not have groups', async () => {
-    const request = supertest(app);
-    const email = `${Math.random().toString(36).substring(7)}@user.com`;
+jest.mock('../models/groupModel');
 
-    const existingUser = new User({
-      userName: 'User name',
-      email,
-      password: md5('user'),
-      registeredAt: [2021, 12, 21],
-      photoURL: 'https://avatars..svg'
+describe('Given a GroupController function', () => {
+  describe('When getAllGroups is invoked', () => {
+    test('Should call res.status 500 when return error', () => {
+      const req = {
+        user: {
+          email: 'user@user.com'
+        }
+      };
+
+      const res = {
+        send: jest.fn(),
+        json: jest.fn(),
+        status: jest.fn()
+      };
+
+      Group.find.mockImplementationOnce((query, callback) => callback(true));
+
+      groupController.getAllGroups(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(500);
     });
 
-    existingUser.save();
+    test('Should call res.status 200', () => {
+      const req = {
+        user: {
+          email: 'user@user.com'
+        }
+      };
 
-    // Esto es como mi postMan
-    const loginResponse = await request.post('/auth/login').send({ email, password: 'user' });
-    const res = await request.get('/groups').set('cookie', loginResponse.headers['set-cookie']);
-    expect(res.status).toBe(200);
-    expect(res.body).toEqual([]);
+      const res = {
+        send: jest.fn(),
+        json: jest.fn(),
+        status: jest.fn()
+      };
+
+      Group.find.mockImplementationOnce((query, callback) => callback(false));
+
+      groupController.getAllGroups(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+    });
   });
 
-  test('Should get groups when user has groups', async () => {
-    const request = supertest(app);
-    const email = `${Math.random().toString(36).substring(7)}@user.com`;
-    const existingUser = new User({
-      userName: 'User name',
-      email,
-      password: md5('user'),
-      registeredAt: [2021, 12, 21],
-      photoURL: 'https://avatars..svg'
+  describe('When createGroup is invoked', () => {
+    test('Should call res.status', () => {
+      const req = {
+        body: {
+          name: 'Group name',
+          members: 'user@user.com'
+        }
+      };
+
+      const res = {
+        status: jest.fn(),
+        send: jest.fn()
+      };
+
+      groupController.createGroup(req, res);
+      expect(res.status).toHaveBeenCalledWith(200);
     });
+  });
 
-    existingUser.save();
+  describe('When createGroup is invoked', () => {
+    test('Should call res.status 500', async () => {
+      const req = {
+        body: {
+          name: 'Group name',
+          members: 'user@user.com'
+        }
+      };
 
-    const group1 = new Group({
-      groupId: 'GR2021313110310',
-      members: [email, 'user2@user.com'],
-      name: 'Group name',
-      date: '2021313'
+      const res = {
+        status: jest.fn(),
+        send: jest.fn()
+      };
+
+      const newGroup = new Group({});
+
+      newGroup.save.mockImplementationOnce(() => {
+        throw new Error();
+      });
+
+      await groupController.createGroup(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(500);
     });
-
-    group1.save();
-
-    // Esto es como mi postMan
-    const loginResponse = await request.post('/auth/login').send({ email, password: 'user' });
-    const res = await request.get('/groups').set('cookie', loginResponse.headers['set-cookie']);
-    console.log(res.body);
-
-    expect(res.status).toBe(200);
-    expect(res.body[0].groupId).toEqual('GR2021313110310');
-
-    // [
-    //   {
-    //     members: [email, 'user2@user.com'],
-    //     _id: '605283b8ed16a0400e91a63b',
-    //     groupId: 'GR2021313110310',
-    //     name: 'Group name',
-    //     date: '2021313',
-    //     __v: 0
-    //   }
-    // ];
   });
 });

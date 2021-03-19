@@ -19,11 +19,11 @@ function GroupController() {
 
     try {
       newGroup.save();
-      res.send('New group created');
       res.status(200);
+      res.send('New group created');
     } catch {
-      res.send('Oops! Group could not be created');
       res.status(500);
+      res.send('Oops! Group could not be created');
     }
   }
 
@@ -32,8 +32,8 @@ function GroupController() {
 
     Group.find(query, (error, groups) => {
       if (error) {
-        res.send();
         res.status(500);
+        res.send();
       } else {
         res.status(200);
         res.json(groups);
