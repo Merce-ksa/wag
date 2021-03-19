@@ -6,6 +6,7 @@ const cors = require('cors');
 const authRouter = require('./src/routes/authRouter');
 const userRouter = require('./src/routes/userRouter');
 const groupRouter = require('./src/routes/groupRouter');
+const folderRouter = require('./src/routes/folderRouter');
 
 const app = express();
 
@@ -28,5 +29,7 @@ require('./src/passport')(app);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/groups', groupRouter);
+app.use('/folder', folderRouter);
+// app.use('/links', linkRouter);
 
 module.exports = app;

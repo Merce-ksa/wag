@@ -24,7 +24,7 @@ function SplashScreen ({ actions, navigation }) {
           value === null ? 'Auth' : 'WagApp'
         )
       })
-    }, 1000)
+    }, 5000)
   }, [])
 
   return (

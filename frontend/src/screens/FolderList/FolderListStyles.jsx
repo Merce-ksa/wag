@@ -12,81 +12,44 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between'
   },
-  redContainer: {
+  folderContainer: {
     width: '48%',
-    minWidth: 148,
     height: 107,
     justifyContent: 'center',
     paddingLeft: 10,
     borderRadius: 20,
-    backgroundColor: '#FEEEEE',
     marginTop: 10
   },
-  redTitle: {
+  folderTitle: {
     fontFamily: 'interMedium',
-    fontSize: 22,
-    color: '#AC4141'
+    fontSize: 18
   },
-  redDate: {
+  folderDate: {
     fontFamily: 'interSemiBold',
-    fontSize: 12,
-    color: '#AC4141'
+    fontSize: 12
+  },
+  redContainer: {
+    backgroundColor: '#FEEEEE'
   },
   blueContainer: {
-    width: '48%',
-    height: 107,
-    justifyContent: 'center',
-    paddingLeft: 10,
-    borderRadius: 20,
-    backgroundColor: '#EEF7FE',
-    marginTop: 10
-  },
-  blueTitle: {
-    fontFamily: 'interMedium',
-    fontSize: 22,
-    color: '#415EB6'
-  },
-  blueDate: {
-    fontFamily: 'interSemiBold',
-    fontSize: 12,
-    color: '#415EB6'
+    backgroundColor: '#EEF7FE'
   },
   yellowContainer: {
-    width: '48%',
-    height: 107,
-    justifyContent: 'center',
-    paddingLeft: 10,
-    borderRadius: 20,
-    backgroundColor: '#FFFBEC',
-    marginTop: 10
-  },
-  yellowTitle: {
-    fontFamily: 'interMedium',
-    fontSize: 22,
-    color: '#FFB110'
-  },
-  yellowDate: {
-    fontFamily: 'interSemiBold',
-    fontSize: 12,
-    color: '#FFB110'
+    backgroundColor: '#FFFBEC'
   },
   greenContainer: {
-    width: '48%',
-    height: 107,
-    justifyContent: 'center',
-    paddingLeft: 10,
-    borderRadius: 20,
-    backgroundColor: '#F0FFFF',
-    marginTop: 10
+    backgroundColor: '#F0FFFF'
   },
-  greenTitle: {
-    fontFamily: 'interMedium',
-    fontSize: 22,
-    color: '#23B0B0'
+  redText: {
+    color: '#AC4141'
   },
-  greenDate: {
-    fontFamily: 'interSemiBold',
-    fontSize: 12,
+  blueText: {
+    color: '#415EB6'
+  },
+  yellowText: {
+    color: '#FFB110'
+  },
+  greenText: {
     color: '#23B0B0'
   }
 })
