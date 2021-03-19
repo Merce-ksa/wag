@@ -1,16 +1,18 @@
 import axios from 'axios'
 import groupActionsTypes from './groupActionsTypes'
 
-// const host = 'http://192.168.0.33:5000'
-const host = 'http://192.168.1.26:5000'
+const sky = 'http://192.168.0.33:5000'
+// const house = 'http://192.168.1.26:5000'
+
+const host = sky
 
 export default function loadGroups () {
   return async (dispatch) => {
     try {
-      const allGroups = await axios.get(`${host}/groups`, { withCredentials: true })
+      const { data } = await axios.get(`${host}/groups`, { withCredentials: true })
       dispatch({
         type: groupActionsTypes.LOAD_GROUPS,
-        groups: allGroups.data
+        groups: data
       })
     } catch {
       dispatch({
