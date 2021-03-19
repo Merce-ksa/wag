@@ -1,6 +1,7 @@
 const initialState = {
   user: {},
-  groups: []
+  groups: [],
+  folders: []
 }
 
 export default initialState

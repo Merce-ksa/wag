@@ -1,5 +1,5 @@
 const { Router } = require('express');
-// const ensureLogin = require('connect-ensure-login');
+const ensureLogin = require('connect-ensure-login');
 const { getAllFolders, createFolder } = require('../controllers/folderController');
 
 function FolderRouter() {
@@ -7,9 +7,11 @@ function FolderRouter() {
 
   router
     .route('/')
-    // .get(ensureLogin.ensureLoggedIn(), getAllFolders)
-    .get(getAllFolders)
     .post(createFolder);
+
+  router
+    .route('/:groupId')
+    .get(ensureLogin.ensureLoggedIn(), getAllFolders);
 
   return router;
 }

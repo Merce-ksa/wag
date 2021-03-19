@@ -29,11 +29,11 @@ function FolderController() {
   }
 
   function getAllFolders(req, res) {
-    const query = { groupId: req.body.groupId };
+    const query = { groupId: req.params.groupId };
 
     Folder.find(query, (error, folders) => {
       if (error) {
-        res.send();
+        res.send(error);
         res.status(500);
       } else {
         res.status(200);

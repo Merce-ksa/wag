@@ -34,14 +34,23 @@ function Home ({ groups, user, actions, navigation }) {
             <Text style={[{ fontFamily: 'barlowMedium' }, homeStyles.title]}>Hi {user.userName}!</Text>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('Profile')}
+              onPress={() =>
+                navigation.navigate('Profile')
+              }
             >
             </TouchableOpacity>
 
           </View>
           <ScrollView key="groupsContainer">
                 {groups && groups.map((group) => (
-                  <TouchableOpacity key={group.name} style={homeStyles.cardContent}>
+                  <TouchableOpacity
+                    key={group.name}
+                    style={homeStyles.cardContent}
+                    onPress={() => navigation.navigate('FolderList', {
+                      groupId: group.groupId,
+                      groupName: group.name
+                    })}
+                  >
                       <Text style={homeStyles.card}>
                           {group.name}
                       </Text>

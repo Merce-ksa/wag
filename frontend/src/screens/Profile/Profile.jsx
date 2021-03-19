@@ -12,9 +12,10 @@ import {
 import { SvgUri } from 'react-native-svg'
 import ProfileStyles from './ProfileStyles'
 
-function Profile ({ user, actions }) {
-  console.log('Entra en profile el usuario:')
-  console.log(user)
+function Profile ({ user, actions, navigation }) {
+  if (!user.email) {
+    navigation.replace('Auth')
+  }
   return (
     <View style= {ProfileStyles.container}>
         <View style={ProfileStyles.profileTitleContent}>
@@ -64,6 +65,10 @@ Profile.propTypes = {
 
   actions: PropTypes.shape({
     logout: PropTypes.func.isRequired
+  }).isRequired,
+
+  navigation: PropTypes.shape({
+    replace: PropTypes.func
   }).isRequired
 }
 function mapStateToProps (state) {
