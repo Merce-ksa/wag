@@ -39,8 +39,8 @@ function Auth() {
 
   function logout(req, res) {
     req.logout();
-    res.status(200);
-    res.send();
+
+    res.status(200).clearCookie('connect.sid', { path: '/' }).send();
   }
 
   return {
