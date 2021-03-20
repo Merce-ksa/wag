@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const app = require('./server');
 
 const sky = 'http://192.168.0.33:5000';
-// const house = 'http://192.168.1.26:5000'
+// const house = 'http://192.168.1.26:5000';
 
 const host = sky;
 

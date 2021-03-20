@@ -84,8 +84,8 @@ Home.propTypes = {
 
   user: PropTypes.shape({
     userName: PropTypes.string,
-    email: PropTypes.string.isRequired
-  }).isRequired,
+    email: PropTypes.string
+  }),
 
   groups: PropTypes.arrayOf(PropTypes.shape({
     groupId: PropTypes.string.isRequired,
