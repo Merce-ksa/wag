@@ -90,16 +90,16 @@ function FolderList ({ route, navigation, folders, actions }) {
               </View>
             </ScrollView>
 
-              <View style={bodyStyles.floatButton}>
-                  <TouchableOpacity
-                      onPress={() => navigation.navigate('CreateGroup')}
-                  >
-                    <Image
-                      style={bodyStyles.imageFloatButton}
-                      source={require('../../assets/images/new-link.png')}
-                    />
-                  </TouchableOpacity>
-              </View>
+            <View style={bodyStyles.floatButton}>
+              <TouchableOpacity
+                  onPress={() => navigation.navigate('NewLink')}
+              >
+                  <Image
+                    style={bodyStyles.imageFloatButton}
+                    source={require('../../assets/images/new-link.png')}
+                  />
+              </TouchableOpacity>
+            </View>
           </View>
   )
 }

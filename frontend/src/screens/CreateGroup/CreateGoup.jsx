@@ -10,6 +10,7 @@ import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
 import CreateGroupStyles from './CreateGroupStyles'
 import formStyles from '../../assets/styles/formStyles'
+import bodyStyles from '../../assets/styles/bodyStyles'
 
 export default function CreateGroup () {
   const [groupName, setGroupName] = useState()
@@ -57,11 +58,9 @@ export default function CreateGroup () {
                 />
 
                 <TouchableOpacity
-                    style = {formStyles.submitButton}
-                    onPress={() => console.log('llama a la accion')}
-                    disabled={!groupName || !members}
+                    onPress={() => console.log('NewLink')}
                 >
-                    <Text style={[{ fontFamily: 'interSemiBold' }, formStyles.submitButtonText]}> Create group </Text>
+                   <Text>Create new group</Text>
                 </TouchableOpacity>
 
             </View>
