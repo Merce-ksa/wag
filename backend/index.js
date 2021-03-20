@@ -3,11 +3,11 @@ const chalk = require('chalk');
 
 const app = require('./server');
 
-const sky = 'http://192.168.0.33:5000';
 // eslint-disable-next-line no-unused-vars
+const sky = 'http://192.168.0.33:5000';
 const house = 'http://192.168.1.26:5000';
 
-const host = sky;
+const host = house;
 
 const port = process.env.PORT || 5000;
 

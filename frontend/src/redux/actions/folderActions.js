@@ -1,10 +1,8 @@
 import axios from 'axios'
 import folderActionsTypes from './folderActionsTypes'
+import hostApp from '../../constants/host'
 
-// const sky = 'http://192.168.0.33:5000'
-const house = 'http://192.168.1.26:5000'
-
-const host = house
+const host = hostApp
 
 export default function loadFolders (groupId) {
   return async (dispatch) => {
