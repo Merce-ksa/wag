@@ -64,7 +64,7 @@ function Home ({ groups, user, actions, navigation }) {
 
             <View style={bodyStyles.floatButton}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('CreateGroup')}
+                    onPress={() => navigation.navigate('NewLink')}
                 >
                     <Image
                       style={bodyStyles.imageFloatButton}
@@ -84,8 +84,8 @@ Home.propTypes = {
 
   user: PropTypes.shape({
     userName: PropTypes.string,
-    email: PropTypes.string.isRequired
-  }).isRequired,
+    email: PropTypes.string
+  }),
 
   groups: PropTypes.arrayOf(PropTypes.shape({
     groupId: PropTypes.string.isRequired,
