@@ -30,6 +30,8 @@ function GroupController() {
   function getAllGroups(req, res) {
     const query = { members: req.user.email };
 
+    console.log(req.user.email);
+
     Group.find(query, (error, groups) => {
       if (error) {
         res.status(500);
