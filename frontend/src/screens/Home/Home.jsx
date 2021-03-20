@@ -25,13 +25,13 @@ function Home ({ groups, user, actions, navigation }) {
   }
 
   return (
-        <View style={homeStyles.HomeContainer}>
-          <View style={homeStyles.homeTitleContent}>
+        <View style={bodyStyles.container}>
+          <View style={bodyStyles.titleContent}>
           <Image
             source={require('../../assets/images/groups.png')}
-            style={homeStyles.wagIcon}
+            style={bodyStyles.sectionIcon}
           />
-            <Text style={[{ fontFamily: 'barlowMedium' }, homeStyles.title]}>Hi {user.userName}!</Text>
+            <Text style={bodyStyles.title}>Hi {user.userName}!</Text>
 
             <TouchableOpacity
               onPress={() =>
@@ -42,36 +42,58 @@ function Home ({ groups, user, actions, navigation }) {
 
           </View>
           <ScrollView key="groupsContainer">
-                {groups && groups.map((group) => (
-                  <TouchableOpacity
-                    key={group.name}
-                    style={homeStyles.cardContent}
-                    onPress={() => navigation.navigate('FolderList', {
-                      groupId: group.groupId,
-                      groupName: group.name
-                    })}
-                  >
-                      <Text style={homeStyles.card}>
-                          {group.name}
-                      </Text>
-                      <Text style={homeStyles.cardDate}>
-                          {group.date}
-                      </Text>
-                  </TouchableOpacity>
+            <View style={homeStyles.groupsContainer}>
+              <Text style={homeStyles.titleGroups}>My groups</Text>
+            {groups && groups.map((group) => (
+              <TouchableOpacity
+                key={group.name}
+                style={homeStyles.cardContent}
+                onPress={() => navigation.navigate('FolderList', {
+                  groupId: group.groupId,
+                  groupName: group.name
+                })}
+              >
+                <View style={homeStyles.infoGroupRight}>
+                  <Text style={homeStyles.card}>
+                        {group.name}
+                    </Text>
+                    <Text style={homeStyles.cardDate}>
+                        {group.date}
+                    </Text>
+                </View>
+                <View style={homeStyles.infoGroupRight}>
+                  <Text style={homeStyles.arrowGroup}>→</Text>
+                </View>
 
-                ))}
-              </ScrollView>
-
-            <View style={bodyStyles.floatButton}>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('NewLink')}
-                >
-                    <Image
-                      style={bodyStyles.imageFloatButton}
-                      source={require('../../assets/images/new-link.png')}
-                    />
-                </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
             </View>
+            <View style={[homeStyles.groupsContainer, homeStyles.newGroupContainer]}>
+                <Text style={homeStyles.titleGroups}>Create your own group</Text>
+                <Text style={homeStyles.subTitleGroups}>
+                    Share a world of resources with your friends.
+                </Text>
+                <View style={homeStyles.newGroupButtonContainer}>
+                  <TouchableOpacity
+                    style={homeStyles.newGroupButton}
+                    onPress={() => navigation.navigate('CreateGroup')}
+                  >
+                    <Text style={homeStyles.textGroupButton}>Create group</Text>
+                </TouchableOpacity>
+                </View>
+            </View>
+          </ScrollView>
+
+          <View style={bodyStyles.floatButton}>
+              <TouchableOpacity
+                  onPress={() => navigation.navigate('NewLink')}
+              >
+                  <Image
+                    style={bodyStyles.imageFloatButton}
+                    source={require('../../assets/images/new-link.png')}
+                  />
+              </TouchableOpacity>
+          </View>
         </View>
   )
 }

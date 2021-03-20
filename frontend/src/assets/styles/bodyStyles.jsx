@@ -26,6 +26,7 @@ export default StyleSheet.create({
     marginTop: 50,
     marginBottom: 50,
     textAlign: 'left',
+    fontFamily: 'barlowMedium',
     fontSize: 30,
     fontWeight: '400'
   },
