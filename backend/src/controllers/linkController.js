@@ -19,7 +19,7 @@ function LinkController() {
       name,
       description,
       tag,
-      createdAt: new Date().toDateString()
+      createdAt: new Date()
     });
 
     try {
@@ -35,7 +35,7 @@ function LinkController() {
   function getAllLinks(req, res) {
     const query = { folderId: req.params.folderId };
 
-    Link.find(query, (error, links) => {
+    Link.find(query, null, { sort: { createdAt: -1 } }, (error, links) => {
       if (error) {
         res.status(500);
         res.send(error);
@@ -45,6 +45,7 @@ function LinkController() {
       }
     });
   }
+
   return {
     getAllLinks,
     createLink

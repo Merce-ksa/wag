@@ -7,7 +7,7 @@ const linkSchema = new Schema({
   name: String,
   description: String,
   tag: String,
-  createdAt: String
+  createdAt: Date
 });
 
 module.exports = model('Link', linkSchema);

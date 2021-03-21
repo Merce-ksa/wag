@@ -1,0 +1,9 @@
+const groupActionTypes = {
+  LOAD_LINKS: 'LOAD_LINKS',
+  LOAD_LINKS_ERROR: 'LOAD_LINKS_ERROR',
+  CREATE_LINK: 'CREATE_LINK',
+  DELETE_LINK: 'DELETE_LINK',
+  UPDATE_LINK: 'UPDATE_LINK'
+}
+
+export default groupActionTypes

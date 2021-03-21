@@ -14,7 +14,10 @@ import ProfileStyles from './ProfileStyles'
 
 function Profile ({ user, actions, navigation }) {
   if (!user.email) {
-    navigation.replace('Auth')
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Auth' }]
+    })
   }
   return (
     <View style= {ProfileStyles.container}>
@@ -68,7 +71,7 @@ Profile.propTypes = {
   }).isRequired,
 
   navigation: PropTypes.shape({
-    replace: PropTypes.func
+    reset: PropTypes.func
   }).isRequired
 }
 function mapStateToProps (state) {

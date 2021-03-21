@@ -79,7 +79,14 @@ function FolderList ({ route, navigation, folders, actions }) {
             <ScrollView key="groupsContainer" style={FolderListStyles.foldersContainer}>
               <View style={FolderListStyles.row}>
                 {folders && folders.map((folder) => (
-                    <TouchableOpacity key={folder.name} style={[FolderListStyles.folderContainer, containerFolderStyle(folder.color)]}>
+                    <TouchableOpacity
+                      key={folder.name}
+                      style={[FolderListStyles.folderContainer, containerFolderStyle(folder.color)]}
+                      onPress={() => navigation.navigate('LinksList', {
+                        folderId: folder.folderId,
+                        folderName: folder.name
+                      })}
+                    >
                         <Image
                             source={iconFolder(folder.color)}
                         />
