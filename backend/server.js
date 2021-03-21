@@ -7,6 +7,7 @@ const authRouter = require('./src/routes/authRouter');
 const userRouter = require('./src/routes/userRouter');
 const groupRouter = require('./src/routes/groupRouter');
 const folderRouter = require('./src/routes/folderRouter');
+const linkRouter = require('./src/routes/linkRouter');
 
 const app = express();
 
@@ -30,6 +31,6 @@ app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/groups', groupRouter);
 app.use('/folder', folderRouter);
-// app.use('/links', linkRouter);
+app.use('/link', linkRouter);
 
 module.exports = app;
