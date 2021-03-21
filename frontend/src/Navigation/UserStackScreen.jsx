@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from '../screens/Home/Home'
 import CreateGroup from '../screens/CreateGroup/CreateGoup'
 import FolderList from '../screens/FolderList/FolderList'
-import Links from '../screens/Links/Links'
+import LinksList from '../screens/Links/Links'
 import NewLink from '../screens/NewLink/NewLink'
 
 const UserStack = createStackNavigator()
@@ -24,8 +24,8 @@ export default function UserSpace () {
         />
 
         <UserStack.Screen
-          name="Links"
-          component={Links}
+          name="LinksList"
+          component={LinksList}
           options={{ headerShown: false }}
         />
 

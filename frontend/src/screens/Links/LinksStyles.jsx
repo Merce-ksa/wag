@@ -4,12 +4,20 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
+  linksContainer: {
+    marginBottom: 20
+  },
   postContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 20,
+    justifyContent: 'flex-start',
+
+    marginTop: 5,
+    marginBottom: 15,
+    marginLeft: 5,
+    marginRight: 5,
     padding: 10,
+
     borderRadius: 5,
     backgroundColor: '#fff',
     shadowColor: '#000',
@@ -23,21 +31,21 @@ export default StyleSheet.create({
     elevation: 6
   },
   postIcon: {
-    width: 60,
-    height: 60
+    width: 45,
+    height: 45
   },
   postInfo: {
-    width: '80%',
-    marginLeft: 10
+    marginLeft: 15
   },
   postTitleContainer: {
-    width: '93%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    justifyContent: 'flex-start'
+  },
+  postDate: {
+    fontFamily: 'interSemiBold',
+    color: '#7B7F9E'
   },
   postDescription: {
-    width: '90%',
-    marginTop: 5
+    fontFamily: 'interMedium',
+    color: '#000'
   }
 })

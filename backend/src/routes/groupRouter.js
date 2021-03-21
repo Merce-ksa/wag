@@ -7,7 +7,7 @@ function GroupRouter() {
 
   router
     .route('/')
-    .get(ensureLogin.ensureLoggedIn(), getAllGroups)
+    .get(ensureLogin.ensureLoggedIn('/auth/login'), getAllGroups)
     .post(createGroup);
 
   return router;

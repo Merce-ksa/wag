@@ -10,7 +10,7 @@ function LinkRouter() {
     .post(createLink);
 
   router
-    .route('/:linkId')
+    .route('/:folderId')
     .get(ensureLogin.ensureLoggedIn(), getAllLinks);
 
   return router;
