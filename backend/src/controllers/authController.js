@@ -4,7 +4,6 @@ const User = require('../models/userModel');
 function Auth() {
   async function register(req, res) {
     const { userName, email, password } = req.body;
-    const [month, day, year] = new Date().toLocaleDateString('en-US').split('/');
 
     User.findOne({ email }).then((user) => {
       if (user) {
@@ -15,7 +14,7 @@ function Auth() {
           userName,
           email,
           password: md5(password),
-          registeredAt: [year, month, day],
+          registeredAt: new Date(),
           photoURL: `https://avatars.dicebear.com/api/gridy/${userName}/custom-happy.svg?colorful=1`
         });
 
@@ -40,7 +39,9 @@ function Auth() {
   function logout(req, res) {
     req.logout();
 
-    res.status(200).clearCookie('connect.sid', { path: '/' }).send();
+    res.status(200)
+      .clearCookie('connect.sid', { path: '/' })
+      .send();
   }
 
   return {
