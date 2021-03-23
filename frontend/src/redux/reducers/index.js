@@ -10,7 +10,9 @@ const rootReducer = combineReducers({
   groups: groupReducer,
   folders: folderReducer,
   links: linkReducer,
-  statusLink: statusLinkReducer
+  groupLastUpdated: groupReducer,
+  folderLastUpdated: folderReducer,
+  linksLastUpdated: statusLinkReducer
 })
 
 export default rootReducer

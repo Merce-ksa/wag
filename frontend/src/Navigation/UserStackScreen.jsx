@@ -1,8 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from '../screens/Home/Home'
-import CreateGroup from '../screens/CreateGroup/CreateGoup'
+import NewGroup from '../screens/NewGroup/NewGoup'
 import FolderList from '../screens/FolderList/FolderList'
+import NewFolder from '../screens/NewFolder/NewFolder'
 import LinksList from '../screens/Links/Links'
 import NewLink from '../screens/NewLink/NewLink'
 
@@ -30,8 +31,14 @@ export default function UserSpace () {
         />
 
         <UserStack.Screen
-          name="CreateGroup"
-          component={CreateGroup}
+          name="NewGroup"
+          component={NewGroup}
+          options={{ headerShown: false }}
+        />
+
+        <UserStack.Screen
+          name="NewFolder"
+          component={NewFolder}
           options={{ headerShown: false }}
         />
 

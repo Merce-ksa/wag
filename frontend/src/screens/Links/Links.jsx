@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
 import Hyperlink from 'react-native-hyperlink'
 import Moment from 'moment'
 import bodyStyles from '../../assets/styles/bodyStyles'
@@ -39,15 +40,17 @@ function formatDate (date) {
   return Moment(`${date}`).format('D MMM YY')
 }
 
-function LinksList ({ route, navigation, links, actions }) {
+function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
   const {
     folderId,
     folderName
   } = route.params
 
+  const isFocused = useIsFocused()
+
   useEffect(() => {
     actions.loadLinks(folderId)
-  }, [])
+  }, [isFocused])
 
   return (
     <View style={bodyStyles.container}>
@@ -121,7 +124,9 @@ LinksList.propTypes = {
     despcription: PropTypes.string,
     tag: PropTypes.string,
     createdAt: PropTypes.string
-  })).isRequired
+  })).isRequired,
+
+  linksLastUpdated: PropTypes.string
 }
 
 function mapStateToProps (state) {

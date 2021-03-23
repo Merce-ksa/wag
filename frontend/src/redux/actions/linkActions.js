@@ -7,7 +7,8 @@ const host = hostApp
 export function loadLinks (folderId) {
   return async (dispatch) => {
     try {
-      const allLinks = await axios.get(`${host}/link/${folderId}`, { widthCredentials: true })
+      const allLinks = await axios.get(`${host}/link/${folderId}`, { withCredentials: true })
+
       dispatch({
         type: linkActionsTypes.LOAD_LINKS,
         links: allLinks.data
@@ -21,19 +22,19 @@ export function loadLinks (folderId) {
   }
 }
 
-export function createLink (url, name, description, tag, folderId) {
-  console.log(url, name, description)
+export function createLink (url, name, description, tagSelected, folderId) {
+  const tag = tagSelected.tag
   return async (dispatch) => {
     try {
-      await axios.post(`${host}/link/`, { url, name, description, tag, folderId }, { widthCredentials: true })
+      await axios.post(`${host}/link/`, { url, name, description, tag, folderId }, { withCredentials: true })
       dispatch({
-        type: linkActionsTypes.CREATE_LINKS,
-        statusLink: true
+        type: linkActionsTypes.CREATE_LINK,
+        linksLastUpdated: `${new Date()}`
       })
     } catch {
       dispatch({
         type: linkActionsTypes.CREATE_LINKS_ERROR,
-        statusLink: false
+        linksLastUpdated: null
       })
     }
   }

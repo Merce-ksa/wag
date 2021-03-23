@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -14,20 +14,12 @@ import DropDownPicker from 'react-native-dropdown-picker'
 import bodyStyles from '../../assets/styles/bodyStyles'
 import formLinkStyles from './NewLinkStyles'
 
-function NewLink ({ route, navigation, statusLink, actions }) {
+function NewLink ({ route, navigation, actions }) {
   const { folderId } = route.params
   const [url, setUrl] = useState('')
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  let [tag, setTag] = useState()
-
-  tag = {
-    tagSelected: null
-  }
-
-  useEffect(() => {
-    statusLink === true ? navigation.navigate('LinksList') : alert('Link could not be created')
-  }, [])
+  const [tag, setTag] = useState('')
 
   return (
     <View style={formLinkStyles.container}>
@@ -75,11 +67,11 @@ function NewLink ({ route, navigation, statusLink, actions }) {
         <DropDownPicker
           items={[
             { label: 'Newsletter', value: 'newsletter', icon: () => {}, selected: true },
-            { label: 'Potcast', value: 'potcast', icon: () => {} },
+            { label: 'Podcast', value: 'podcast', icon: () => {} },
             { label: 'Video', value: 'video', icon: () => {} },
             { label: 'Tool', value: 'tool', icon: () => {} }
           ]}
-          placeholder='Select TAG'
+          placeholder='Select tag'
           defaultValue={tag.tagSelected}
           style={{ backgroundColor: '#22215B' }}
           containerStyle={{ height: 40 }}
@@ -111,7 +103,8 @@ function NewLink ({ route, navigation, statusLink, actions }) {
           alert('Debes introducir una url que comience con https://')
         }
 
-        actions.createLink(url, name, description, tag.tagSelected, folderId)
+        actions.createLink(url, name, description, tag, folderId)
+        navigation.navigate('LinksList')
       }}
 
     >
@@ -126,7 +119,7 @@ NewLink.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
       folderId: PropTypes.string
-    }).isRequired
+    })
   }).isRequired,
 
   navigation: PropTypes.shape({
@@ -135,15 +128,7 @@ NewLink.propTypes = {
 
   actions: PropTypes.shape({
     createLink: PropTypes.func
-  }).isRequired,
-
-  statusLink: PropTypes.bool
-}
-
-function mapStateToProps (state) {
-  return {
-    statusLink: state.statusLink
-  }
+  }).isRequired
 }
 
 function mapDispatchToProps (dispatch) {
@@ -152,4 +137,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewLink)
+export default connect(null, mapDispatchToProps)(NewLink)

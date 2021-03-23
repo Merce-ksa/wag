@@ -8,7 +8,12 @@ function GroupController() {
   }
 
   function createGroup(req, res) {
-    const { name, members } = req.body;
+    let { members } = req.body;
+    const { name } = req.body;
+    const { email } = req.user;
+
+    members = members.split(', ');
+    members.push(email);
 
     const newGroup = new Group({
       groupId: generateId(),
@@ -30,8 +35,6 @@ function GroupController() {
   function getAllGroups(req, res) {
     const query = { members: req.user.email };
 
-    console.log(req.user.email);
-
     Group.find(query, (error, groups) => {
       if (error) {
         res.status(500);
@@ -42,6 +45,7 @@ function GroupController() {
       }
     });
   }
+
   return {
     getAllGroups,
     createGroup

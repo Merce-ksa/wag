@@ -15,7 +15,7 @@ function FolderController() {
       groupId,
       name,
       color,
-      createdAt: new Date().toDateString()
+      createdAt: new Date()
     });
 
     try {

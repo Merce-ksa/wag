@@ -3,7 +3,9 @@ const initialState = {
   groups: [],
   folders: [],
   links: [],
-  statusLink: false
+  groupLastUpdated: null,
+  folderLastUpdated: null,
+  linksLastUpdated: null
 }
 
 export default initialState

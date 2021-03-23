@@ -11,7 +11,7 @@ function LinkRouter() {
 
   router
     .route('/:folderId')
-    .get(ensureLogin.ensureLoggedIn(), getAllLinks);
+    .get(ensureLogin.ensureLoggedIn('/auth/login'), getAllLinks);
 
   return router;
 }
