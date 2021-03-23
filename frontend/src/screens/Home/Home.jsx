@@ -83,17 +83,6 @@ function Home ({ groups, user, actions, navigation }) {
                 </View>
             </View>
           </ScrollView>
-
-          <View style={bodyStyles.floatButton}>
-              <TouchableOpacity
-                  onPress={() => navigation.navigate('NewLink')}
-              >
-                  <Image
-                    style={bodyStyles.imageFloatButton}
-                    source={require('../../assets/images/new-link.png')}
-                  />
-              </TouchableOpacity>
-          </View>
         </View>
   )
 }

@@ -24,7 +24,9 @@ export default StyleSheet.create({
     fontSize: 20,
     paddingLeft: 10,
     borderBottomColor: '#7B7F9E',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    color: '#fff',
+    fontFamily: 'interRegular'
   },
   urlName: {
     marginTop: 20,
@@ -32,7 +34,9 @@ export default StyleSheet.create({
     height: 50,
     fontSize: 20,
     borderBottomColor: '#7B7F9E',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    color: '#fff',
+    fontFamily: 'interRegular'
   },
   descriptionLink: {
     marginTop: 20,
@@ -40,10 +44,9 @@ export default StyleSheet.create({
     height: 50,
     fontSize: 20,
     borderBottomColor: '#7B7F9E',
-    borderBottomWidth: 1
-  },
-  firstSelectView: {
-    marginTop: 40
+    borderBottomWidth: 1,
+    color: '#fff',
+    fontFamily: 'interRegular'
   },
   selectView: {
     marginTop: 20
@@ -52,7 +55,7 @@ export default StyleSheet.create({
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 200,
     padding: 10,
     borderRadius: 5,
     backgroundColor: '#7B7F9E'

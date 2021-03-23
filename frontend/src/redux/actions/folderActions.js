@@ -7,16 +7,17 @@ const host = hostApp
 export default function loadFolders (groupId) {
   return async (dispatch) => {
     try {
-      const allFolders = await axios.get(`${host}/folder/${groupId}`, { withCredentials: true })
-      console.log(allFolders.data)
+      const allFoldersGroup = await axios.get(`${host}/folder/${groupId}`, { withCredentials: true })
+      console.log(allFoldersGroup)
 
       dispatch({
         type: folderActionsTypes.LOAD_FOLDERS,
-        folders: allFolders.data
+        folders: allFoldersGroup.data
       })
     } catch {
       dispatch({
-        type: folderActionsTypes.LOAD_FOLDERS_ERROR
+        type: folderActionsTypes.LOAD_FOLDERS_ERROR,
+        folders: null
       })
     }
   }

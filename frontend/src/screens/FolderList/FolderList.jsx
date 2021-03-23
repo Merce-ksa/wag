@@ -97,16 +97,6 @@ function FolderList ({ route, navigation, folders, actions }) {
               </View>
             </ScrollView>
 
-            <View style={bodyStyles.floatButton}>
-              <TouchableOpacity
-                  onPress={() => navigation.navigate('NewLink')}
-              >
-                  <Image
-                    style={bodyStyles.imageFloatButton}
-                    source={require('../../assets/images/new-link.png')}
-                  />
-              </TouchableOpacity>
-            </View>
           </View>
   )
 }
@@ -119,11 +109,11 @@ FolderList.propTypes = {
     }).isRequired
   }).isRequired,
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired
+    navigate: PropTypes.func
   }).isRequired,
 
   actions: PropTypes.shape({
-    loadFolders: PropTypes.func.isRequired
+    loadFolders: PropTypes.func
   }).isRequired,
 
   folders: PropTypes.arrayOf(PropTypes.shape({

@@ -65,15 +65,15 @@ function Login ({ actions, user, navigation }) {
 
 Login.propTypes = {
   actions: PropTypes.shape({
-    login: PropTypes.func.isRequired
+    login: PropTypes.func
   }).isRequired,
 
   user: PropTypes.shape({
-    email: PropTypes.string.isRequired
+    email: PropTypes.string
   }),
 
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired
+    navigate: PropTypes.func
   }).isRequired
 }
 

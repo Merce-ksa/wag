@@ -4,7 +4,7 @@ import hostApp from '../../constants/host'
 
 const host = hostApp
 
-export default function loadLinks (folderId) {
+export function loadLinks (folderId) {
   return async (dispatch) => {
     try {
       const allLinks = await axios.get(`${host}/link/${folderId}`, { widthCredentials: true })
@@ -16,6 +16,24 @@ export default function loadLinks (folderId) {
       dispatch({
         type: linkActionsTypes.LOAD_LINKS_ERROR,
         links: null
+      })
+    }
+  }
+}
+
+export function createLink (url, name, description, tag, folderId) {
+  console.log(url, name, description)
+  return async (dispatch) => {
+    try {
+      await axios.post(`${host}/link/`, { url, name, description, tag, folderId }, { widthCredentials: true })
+      dispatch({
+        type: linkActionsTypes.CREATE_LINKS,
+        statusLink: true
+      })
+    } catch {
+      dispatch({
+        type: linkActionsTypes.CREATE_LINKS_ERROR,
+        statusLink: false
       })
     }
   }
