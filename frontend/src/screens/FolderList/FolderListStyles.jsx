@@ -51,5 +51,23 @@ export default StyleSheet.create({
   },
   greenText: {
     color: '#23B0B0'
+  },
+  newFolderButtonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  newFolderButton: {
+    width: 150,
+    height: 38,
+    margin: 15,
+    justifyContent: 'center',
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: '#567DF4'
+  },
+  textFolderButton: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16
   }
 })

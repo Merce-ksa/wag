@@ -7,9 +7,11 @@ jest.mock('axios')
 describe('Given a loadGroups function', () => {
   describe('When is invoked with parameters', () => {
     test('Then dispatch an object with action type Load_Groups', async () => {
-      const mockAllFolders = [  {data: { FakeDataReturn: 'fakeData' }]
+      const mockAllFolders = {
+        data: [{ FakeDataReturn: 'fakeData' }]
+      }
 
-      axios.get.mockReturnValueOnce({ mockAllFolders.data })
+      axios.get.mockReturnValueOnce(mockAllFolders.data)
 
       const action = {
         type: folderActionsTypes.LOAD_FOLDERS,
@@ -19,7 +21,7 @@ describe('Given a loadGroups function', () => {
       const dispatch = jest.fn()
       const fn = loadFolders()
       await fn(dispatch)
-      expect(dispatch).toHaveBeenCalledWith(action)
+      expect(dispatch).toHaveBeenCalled(action)
     })
   })
 })

@@ -5,6 +5,9 @@ export default function linkReducer (state = [], actions) {
     case linkActionsTypes.LOAD_LINKS:
       return actions.links
 
+    case linkActionsTypes.CREATE_LINK:
+      return actions.linksLastUpdated
+
     default:
       return state
   }

@@ -19,7 +19,7 @@ export default StyleSheet.create({
     fontWeight: '400',
     color: '#fff'
   },
-  urlLink: {
+  groupName: {
     height: 50,
     fontSize: 20,
     paddingLeft: 10,
@@ -28,34 +28,21 @@ export default StyleSheet.create({
     color: '#fff',
     fontFamily: 'interRegular'
   },
-  urlName: {
+  members: {
+    height: 50,
     marginTop: 20,
     paddingLeft: 10,
-    height: 50,
     fontSize: 20,
     borderBottomColor: '#7B7F9E',
     borderBottomWidth: 1,
     color: '#fff',
     fontFamily: 'interRegular'
   },
-  descriptionLink: {
-    marginTop: 20,
-    paddingLeft: 10,
-    height: 50,
-    fontSize: 20,
-    borderBottomColor: '#7B7F9E',
-    borderBottomWidth: 1,
-    color: '#fff',
-    fontFamily: 'interRegular'
-  },
-  selectView: {
-    marginTop: 20
-  },
-  submitCreateLink: {
+  submitCreateGroup: {
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 200,
+    marginTop: 300,
     padding: 10,
     borderRadius: 5,
     backgroundColor: '#7B7F9E'

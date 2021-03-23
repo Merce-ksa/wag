@@ -7,7 +7,6 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     padding: 10,
     borderRadius: 20
-    // borderWidth: 1
   },
   titleGroups: {
     fontFamily: 'interSemiBold',
@@ -23,19 +22,27 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10,
+
+    marginTop: 15,
+    marginBottom: 15,
+    marginLeft: 5,
+    marginRight: 5,
+    padding: 10,
+
     borderTopEndRadius: 10,
     borderBottomEndRadius: 10,
+
+    borderRadius: 5,
+    backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 1
+      height: 4
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
 
-    elevation: 2
+    elevation: 6
   },
   infoGroupRight: {
     marginRight: 20

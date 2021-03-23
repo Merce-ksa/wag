@@ -5,7 +5,7 @@ const folderSchema = new Schema({
   groupId: String,
   name: String,
   color: String,
-  createdAt: String
+  createdAt: Date
 });
 
 module.exports = model('Folder', folderSchema);

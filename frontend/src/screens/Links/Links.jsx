@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import loadLinks from '../../redux/actions/linkActions'
+import { loadLinks, createLink } from '../../redux/actions/linkActions'
 import {
   Text,
   View,
@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
 import Hyperlink from 'react-native-hyperlink'
 import Moment from 'moment'
 import bodyStyles from '../../assets/styles/bodyStyles'
@@ -39,15 +40,17 @@ function formatDate (date) {
   return Moment(`${date}`).format('D MMM YY')
 }
 
-function LinksList ({ route, navigation, links, actions }) {
+function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
   const {
     folderId,
     folderName
   } = route.params
 
+  const isFocused = useIsFocused()
+
   useEffect(() => {
     actions.loadLinks(folderId)
-  }, [])
+  }, [isFocused])
 
   return (
     <View style={bodyStyles.container}>
@@ -85,14 +88,14 @@ function LinksList ({ route, navigation, links, actions }) {
       </ScrollView>
 
       <View style={bodyStyles.floatButton}>
-          <TouchableOpacity
-              onPress={() => navigation.navigate('CreateGroup')}
-          >
+        <TouchableOpacity
+            onPress={() => navigation.navigate('NewLink', { folderId: folderId })}
+        >
             <Image
               style={bodyStyles.imageFloatButton}
               source={require('../../assets/images/new-link.png')}
             />
-          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -103,14 +106,14 @@ LinksList.propTypes = {
     params: PropTypes.shape({
       folderId: PropTypes.string,
       folderName: PropTypes.string
-    }).isRequired
+    })
   }).isRequired,
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired
+    navigate: PropTypes.func
   }).isRequired,
 
   actions: PropTypes.shape({
-    loadLinks: PropTypes.func.isRequired
+    loadLinks: PropTypes.func
   }).isRequired,
 
   links: PropTypes.arrayOf(PropTypes.shape({
@@ -121,7 +124,9 @@ LinksList.propTypes = {
     despcription: PropTypes.string,
     tag: PropTypes.string,
     createdAt: PropTypes.string
-  })).isRequired
+  })).isRequired,
+
+  linksLastUpdated: PropTypes.string
 }
 
 function mapStateToProps (state) {
@@ -132,7 +137,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators({ loadLinks }, dispatch)
+    actions: bindActionCreators({ loadLinks, createLink }, dispatch)
   }
 }
 

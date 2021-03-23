@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import loadFolders from '../../redux/actions/folderActions'
+import { loadFolders } from '../../redux/actions/folderActions'
 import {
   Text,
   View,
@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
+import Moment from 'moment'
 import bodyStyles from '../../assets/styles/bodyStyles'
 import FolderListStyles from './FolderListStyles'
 
@@ -57,15 +59,24 @@ function iconFolder (color) {
   }
 }
 
+function formatDate (date) {
+  Moment.locale('es')
+
+  return Moment(`${date}`).format('D MMM YY')
+}
+
 function FolderList ({ route, navigation, folders, actions }) {
   const {
     groupId,
     groupName
   } = route.params
 
+  const isFocused = useIsFocused()
+
   useEffect(() => {
+    console.log('use effect loadfolders')
     actions.loadFolders(groupId)
-  }, [])
+  }, [isFocused])
 
   return (
           <View style={bodyStyles.container}>
@@ -91,22 +102,20 @@ function FolderList ({ route, navigation, folders, actions }) {
                             source={iconFolder(folder.color)}
                         />
                         <Text style={[FolderListStyles.folderTitle, textFolderStyle(folder.color)]}>{folder.name}</Text>
-                        <Text style={[FolderListStyles.folderDate, textFolderStyle(folder.color)]}>{folder.createdAt}</Text>
+                        <Text style={[FolderListStyles.folderDate, textFolderStyle(folder.color)]}>{formatDate(folder.createdAt)}</Text>
                     </TouchableOpacity>
                 ))}
               </View>
             </ScrollView>
-
-            <View style={bodyStyles.floatButton}>
+            <View style={FolderListStyles.newFolderButtonContainer}>
               <TouchableOpacity
-                  onPress={() => navigation.navigate('NewLink')}
+                style={FolderListStyles.newFolderButton}
+                onPress={() => navigation.navigate('NewFolder', { groupId: groupId })}
               >
-                  <Image
-                    style={bodyStyles.imageFloatButton}
-                    source={require('../../assets/images/new-link.png')}
-                  />
-              </TouchableOpacity>
-            </View>
+                <Text style={FolderListStyles.textFolderButton}>Create group</Text>
+            </TouchableOpacity>
+          </View>
+
           </View>
   )
 }
@@ -119,11 +128,11 @@ FolderList.propTypes = {
     }).isRequired
   }).isRequired,
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired
+    navigate: PropTypes.func
   }).isRequired,
 
   actions: PropTypes.shape({
-    loadFolders: PropTypes.func.isRequired
+    loadFolders: PropTypes.func
   }).isRequired,
 
   folders: PropTypes.arrayOf(PropTypes.shape({

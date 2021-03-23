@@ -7,20 +7,20 @@ function PassportConfig(app) {
     secret: 'abcdefg',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 3000000 }
   }));
   app.use(passport.initialize());
   app.use(passport.session());
 
   // Almacenar user en la sesión
   passport.serializeUser((user, done) => {
-    console.log(user);
+    // console.log(user);
     done(null, user);
   });
 
   // Recuperar user de la sesión
   passport.deserializeUser((user, done) => {
-    console.log(user);
+    // console.log(user);
     done(null, user);
   });
 }
