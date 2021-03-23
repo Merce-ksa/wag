@@ -7,7 +7,7 @@ const userSchema = new Schema({
   userName: String,
   description: String,
   photoURL: String,
-  registeredAt: []
+  registeredAt: Date
 });
 
 userSchema.methods.validPassword = function (pwd) {
