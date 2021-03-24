@@ -8,7 +8,6 @@ export function loadFolders (groupId) {
   return async (dispatch) => {
     try {
       const allFoldersGroup = await axios.get(`${host}/folder/${groupId}`, { withCredentials: true })
-      console.log(allFoldersGroup)
 
       dispatch({
         type: folderActionsTypes.LOAD_FOLDERS,
@@ -16,15 +15,13 @@ export function loadFolders (groupId) {
       })
     } catch {
       dispatch({
-        type: folderActionsTypes.LOAD_FOLDERS_ERROR,
-        folders: null
+        type: folderActionsTypes.LOAD_FOLDERS_ERROR
       })
     }
   }
 }
 
 export function createFolder (name, colorSelected, groupId) {
-  console.log(colorSelected.color)
   const color = colorSelected.color
   return async (dispatch) => {
     try {

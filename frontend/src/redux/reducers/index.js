@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import userReducer from './userReducer'
 import groupReducer from './groupReducer'
 import folderReducer from './folderReducer'
+import statusFolderReducer from './statusFolderReducer'
 import linkReducer from './linkReducer'
 import statusLinkReducer from './statusLinkReducer'
 
@@ -11,7 +12,7 @@ const rootReducer = combineReducers({
   folders: folderReducer,
   links: linkReducer,
   groupLastUpdated: groupReducer,
-  folderLastUpdated: folderReducer,
+  folderLastUpdated: statusFolderReducer,
   linksLastUpdated: statusLinkReducer
 })
 

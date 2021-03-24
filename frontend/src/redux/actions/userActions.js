@@ -19,8 +19,6 @@ export function register (userName, email, password) {
         data: user.data
       })
     } catch {
-      console.log('registro fallido')
-
       dispatch({
         type: userActionsTypes.REGISTERED_ERROR
       })

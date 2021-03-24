@@ -9,23 +9,22 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native'
-import NewGroupStyles from './NewGroupStyles'
+import formStyles from '../../assets/styles/formStyles'
 import bodyStyles from '../../assets/styles/bodyStyles'
 
 function NewGroup ({ navigation, actions }) {
   const [groupName, setGroupName] = useState()
   const [members, setMembers] = useState()
 
-  console.log(groupName, members)
   return (
-    <View style={NewGroupStyles.container}>
+    <View style={formStyles.container}>
       <View style={bodyStyles.titleContent}>
-        <Text style={[{ fontFamily: 'barlowMedium' }, NewGroupStyles.title]}>New Link</Text>
+        <Text style={formStyles.title}>New Link</Text>
       </View>
 
     <View key="urlName">
       <TextInput
-        style = {NewGroupStyles.groupName}
+        style = {formStyles.input}
         underlineColorAndroid = "transparent"
         placeholder = "Group name"
         placeholderTextColor = "#7B7F9E"
@@ -35,7 +34,7 @@ function NewGroup ({ navigation, actions }) {
       />
 
       <TextInput
-        style = {NewGroupStyles.members}
+        style = {[formStyles.input, formStyles.inputMargin]}
         underlineColorAndroid = "transparent"
         placeholder = "Mail to members"
         placeholderTextColor = "#7B7F9E"
@@ -49,13 +48,13 @@ function NewGroup ({ navigation, actions }) {
       />
     </View>
     <TouchableOpacity
-      style = {NewGroupStyles.submitCreateGroup}
+      style = {[formStyles.submitCreateElement, formStyles.marginTopBottomButton]}
       onPress={() => {
         actions.createGroup(groupName, members)
         navigation.navigate('Home')
       }}
     >
-    <Text style={NewGroupStyles.submitButtonText}> Create </Text>
+    <Text style={formStyles.submitButtonText}> Create </Text>
     </TouchableOpacity>
 
     </View>

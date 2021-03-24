@@ -74,49 +74,48 @@ function FolderList ({ route, navigation, folders, actions }) {
   const isFocused = useIsFocused()
 
   useEffect(() => {
-    console.log('use effect loadfolders')
     actions.loadFolders(groupId)
   }, [isFocused])
 
   return (
-          <View style={bodyStyles.container}>
-            <View style={bodyStyles.titleContent}>
-            <Image
-              source={require('../../assets/images/folder-list.png')}
-              style={bodyStyles.sectionIcon}
-            />
-              <Text style={[{ fontFamily: 'barlowMedium' }, bodyStyles.title]}>{groupName}</Text>
-            </View>
-            <ScrollView key="groupsContainer" style={FolderListStyles.foldersContainer}>
-              <View style={FolderListStyles.row}>
-                {folders && folders.map((folder) => (
-                    <TouchableOpacity
-                      key={folder.name}
-                      style={[FolderListStyles.folderContainer, containerFolderStyle(folder.color)]}
-                      onPress={() => navigation.navigate('LinksList', {
-                        folderId: folder.folderId,
-                        folderName: folder.name
-                      })}
-                    >
-                        <Image
-                            source={iconFolder(folder.color)}
-                        />
-                        <Text style={[FolderListStyles.folderTitle, textFolderStyle(folder.color)]}>{folder.name}</Text>
-                        <Text style={[FolderListStyles.folderDate, textFolderStyle(folder.color)]}>{formatDate(folder.createdAt)}</Text>
-                    </TouchableOpacity>
-                ))}
-              </View>
-            </ScrollView>
-            <View style={FolderListStyles.newFolderButtonContainer}>
+    <View style={bodyStyles.container}>
+      <View style={bodyStyles.titleContent}>
+      <Image
+        source={require('../../assets/images/folder-list.png')}
+        style={bodyStyles.sectionIcon}
+      />
+        <Text style={[{ fontFamily: 'barlowMedium' }, bodyStyles.title]}>{groupName}</Text>
+      </View>
+      <ScrollView key="groupsContainer" style={FolderListStyles.foldersContainer}>
+        <View style={FolderListStyles.row}>
+          {folders && folders.map((folder) => (
               <TouchableOpacity
-                style={FolderListStyles.newFolderButton}
-                onPress={() => navigation.navigate('NewFolder', { groupId: groupId })}
+                key={folder.name}
+                style={[FolderListStyles.folderContainer, containerFolderStyle(folder.color)]}
+                onPress={() => navigation.navigate('LinksList', {
+                  folderId: folder.folderId,
+                  folderName: folder.name
+                })}
               >
-                <Text style={FolderListStyles.textFolderButton}>Create group</Text>
-            </TouchableOpacity>
-          </View>
+                  <Image
+                      source={iconFolder(folder.color)}
+                  />
+                  <Text style={[FolderListStyles.folderTitle, textFolderStyle(folder.color)]}>{folder.name}</Text>
+                  <Text style={[FolderListStyles.folderDate, textFolderStyle(folder.color)]}>{formatDate(folder.createdAt)}</Text>
+              </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+      <View style={FolderListStyles.newFolderButtonContainer}>
+        <TouchableOpacity
+          style={FolderListStyles.newFolderButton}
+          onPress={() => navigation.navigate('NewFolder', { groupId: groupId })}
+        >
+          <Text style={FolderListStyles.textFolderButton}>Create folder</Text>
+      </TouchableOpacity>
+    </View>
 
-          </View>
+    </View>
   )
 }
 
@@ -127,6 +126,7 @@ FolderList.propTypes = {
       groupName: PropTypes.string
     }).isRequired
   }).isRequired,
+
   navigation: PropTypes.shape({
     navigate: PropTypes.func
   }).isRequired,
@@ -141,7 +141,7 @@ FolderList.propTypes = {
     name: PropTypes.string,
     createdAt: PropTypes.string,
     color: PropTypes.string
-  })).isRequired
+  }))
 }
 
 function mapStateToProps (state) {

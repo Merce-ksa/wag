@@ -17,7 +17,6 @@ function Register ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  console.log(user)
   if (user && user.email) {
     navigation.replace('SplashScreen')
   }
@@ -96,7 +95,6 @@ Register.propTypes = {
 }
 
 function mapStateToProps (state) {
-  console.log(state)
   return { user: state.user }
 }
 
