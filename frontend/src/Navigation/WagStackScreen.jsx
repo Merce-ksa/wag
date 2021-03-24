@@ -4,7 +4,7 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import UserPages from '../Navigation/UserStackScreen'
 import Feather from 'react-native-vector-icons/Feather'
-import Profile from '../screens/Profile/Profile'
+import Profile from '../Screens/Profile/Profile'
 const WagTab = createBottomTabNavigator()
 
 export default function WagApp () {

@@ -1,7 +1,7 @@
 import React from 'react'
-import Landing from '../screens/Landing/Landing'
-import Register from '../screens/Register/Register'
-import Login from '../screens/Login/Login'
+import Landing from '../Screens/Auth/Landing/Landing'
+import Register from '../Screens/Auth/Register/Register'
+import Login from '../Screens/Auth/Login/Login'
 
 import { createStackNavigator } from '@react-navigation/stack'
 const AuthStack = createStackNavigator()

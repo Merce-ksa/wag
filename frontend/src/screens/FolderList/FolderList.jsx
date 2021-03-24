@@ -65,7 +65,7 @@ function formatDate (date) {
   return Moment(`${date}`).format('D MMM YY')
 }
 
-function FolderList ({ route, navigation, folders, actions }) {
+function FolderList ({ route, navigation, folders, folderLastUpdated, actions }) {
   const {
     groupId,
     groupName
@@ -76,6 +76,10 @@ function FolderList ({ route, navigation, folders, actions }) {
   useEffect(() => {
     actions.loadFolders(groupId)
   }, [isFocused])
+
+  useEffect(() => {
+    actions.loadFolders(groupId)
+  }, [folderLastUpdated])
 
   return (
     <View style={bodyStyles.container}>
@@ -141,12 +145,15 @@ FolderList.propTypes = {
     name: PropTypes.string,
     createdAt: PropTypes.string,
     color: PropTypes.string
-  }))
+  })),
+
+  folderLastUpdated: PropTypes.string
 }
 
 function mapStateToProps (state) {
   return {
-    folders: state.folders
+    folders: state.folders,
+    folderLastUpdated: state.folderLastUpdated
   }
 }
 

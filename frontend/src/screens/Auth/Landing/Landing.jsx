@@ -8,7 +8,7 @@ export default function Landing ({ navigation }) {
     <View style={LandingStyles.landingContainer}>
       <View>
         <Image
-          source={require('../../assets/images/illustration.png')}
+          source={require('../../../assets/images/illustration.png')}
         />
       </View>
       <View style={LandingStyles.landingMain}>

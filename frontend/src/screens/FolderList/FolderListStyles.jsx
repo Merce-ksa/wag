@@ -14,6 +14,7 @@ export default StyleSheet.create({
   },
   folderContainer: {
     width: '48%',
+    minWidth: 145,
     height: 107,
     justifyContent: 'center',
     paddingLeft: 10,
