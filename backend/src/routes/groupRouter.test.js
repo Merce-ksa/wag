@@ -19,7 +19,6 @@ xdescribe('Given a /groups endpoint', () => {
 
     existingUser.save();
 
-    // Esto es como mi postMan
     const loginResponse = await request.post('/auth/login').send({ email, password: 'user' });
     const res = await request.get('/groups').set('cookie', loginResponse.headers['set-cookie']);
     expect(res.status).toBe(200);
@@ -48,10 +47,8 @@ xdescribe('Given a /groups endpoint', () => {
 
     group1.save();
 
-    // Esto es como mi postMan
     const loginResponse = await request.post('/auth/login').send({ email, password: 'user' });
     const res = await request.get('/groups').set('cookie', loginResponse.headers['set-cookie']);
-    console.log(res.body);
 
     expect(res.status).toBe(200);
     expect(res.body[0].groupId).toEqual('GR2021313110310');
