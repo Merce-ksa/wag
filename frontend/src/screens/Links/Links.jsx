@@ -76,19 +76,6 @@ function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
 
             <View style={LinksStyles.postInfo}>
               <View style={LinksStyles.postTitleContainer}>
-              <TouchableOpacity onLongPress={() =>
-                Alert.alert(
-                  'Delete link',
-                  'Do you want to remove the link?',
-                  [
-                    {
-                      text: 'Cancel',
-                      style: 'cancel'
-                    },
-                    { text: 'OK', onPress: () => console.log('OK Pressed') }
-                  ]
-                )
-              }>
                 <Hyperlink
                   linkDefault={ true }
                   linkStyle={ { color: '#22215B', fontSize: 16, fontFamily: 'interBold' } }
@@ -98,7 +85,6 @@ function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
                 </Hyperlink>
                 <Text style={LinksStyles.postDate}>{formatDate(link.createdAt)}</Text>
                 <Text style={LinksStyles.postDescription}>{link.description}</Text>
-                </TouchableOpacity>
               </View>
             </View>
         </View>

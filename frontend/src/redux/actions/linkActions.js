@@ -15,8 +15,7 @@ export function loadLinks (folderId) {
       })
     } catch {
       dispatch({
-        type: linkActionsTypes.LOAD_LINKS_ERROR,
-        links: null
+        type: linkActionsTypes.LOAD_LINKS_ERROR
       })
     }
   }

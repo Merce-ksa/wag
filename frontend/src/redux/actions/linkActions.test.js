@@ -28,8 +28,7 @@ describe('Given a loadLinks function', () => {
       axios.get.mockImplementationOnce(() => { throw new Error() })
 
       const action = {
-        type: linkActionsTypes.LOAD_LINKS_ERROR,
-        links: null
+        type: linkActionsTypes.LOAD_LINKS_ERROR
       }
 
       const dispatch = jest.fn()
