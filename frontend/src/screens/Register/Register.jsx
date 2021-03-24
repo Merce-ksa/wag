@@ -10,7 +10,7 @@ import formAuthStyles from '../../assets/styles/formAuthStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { register } from '../../redux/actions/userActions'
-import Hero from '../../components/Hero/Hero'
+import Hero from '../../Components/Hero/Hero'
 
 function Register ({ actions, user, navigation }) {
   const [userName, setName] = useState()

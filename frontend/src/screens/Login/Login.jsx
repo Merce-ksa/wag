@@ -10,7 +10,7 @@ import formAuthStyles from '../../assets/styles/formAuthStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { login } from '../../redux/actions/userActions'
-import Hero from '../../components/Hero/Hero'
+import Hero from '../../Components/Hero/Hero'
 
 function Login ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
