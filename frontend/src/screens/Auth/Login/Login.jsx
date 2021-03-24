@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+/* eslint-disable no-use-before-define */
+import React, { useState, useEffect } from 'react'
 import {
   Text,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 } from 'react-native'
 import PropTypes from 'prop-types'
 import formAuthStyles from '../../../assets/styles/formAuthStyles'
@@ -15,6 +17,17 @@ import Hero from '../../../Components/Hero/Hero'
 function Login ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow')
+    Keyboard.addListener('keyboardDidHide')
+
+    // cleanup function
+    return () => {
+      Keyboard.removeListener('keyboardDidShow')
+      Keyboard.removeListener('keyboardDidHide')
+    }
+  }, [])
 
   if (user && user.email) {
     navigation.navigate('WagApp')
@@ -29,26 +42,28 @@ function Login ({ actions, user, navigation }) {
       </View>
 
       <View style={formAuthStyles.formContainer}>
-        <TextInput
-          style = {formAuthStyles.input}
-          underlineColorAndroid = "transparent"
-          placeholder = "Email"
-          placeholderTextColor = "#7B7F9E"
-          autoCapitalize = "none"
-          value={email}
-          onChangeText={(textValue) => setEmail(textValue)}
-        />
-        <TextInput
-          style = {formAuthStyles.input}
-          underlineColorAndroid = "transparent"
-          placeholder = "Password"
-          placeholderTextColor = "#7B7F9E"
-          secureTextEntry={true}
-          autoCapitalize = "none"
-          value={password}
-          onChangeText={(textValue) => setPassword(textValue)}
-          >
-        </TextInput>
+
+          <TextInput
+            style = {formAuthStyles.input}
+            underlineColorAndroid = "transparent"
+            placeholder = "Email"
+            placeholderTextColor = "#7B7F9E"
+            autoCapitalize = "none"
+            value={email}
+            onChangeText={(textValue) => setEmail(textValue)}
+            onSubmitEditing={Keyboard.dismiss}
+          />
+          <TextInput
+            style = {formAuthStyles.input}
+            underlineColorAndroid = "transparent"
+            placeholder = "Password"
+            placeholderTextColor = "#7B7F9E"
+            secureTextEntry={true}
+            autoCapitalize = "none"
+            value={password}
+            onChangeText={(textValue) => setPassword(textValue)}
+            >
+          </TextInput>
 
         <TouchableOpacity
           style = {formAuthStyles.submitButton}

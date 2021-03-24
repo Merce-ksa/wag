@@ -19,7 +19,7 @@ function NewGroup ({ navigation, actions }) {
   return (
     <View style={formStyles.container}>
       <View style={bodyStyles.titleContent}>
-        <Text style={formStyles.title}>New Link</Text>
+        <Text style={formStyles.title}>New Group</Text>
       </View>
 
     <View key="urlName">
