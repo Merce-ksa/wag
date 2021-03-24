@@ -8,7 +8,8 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Image
+  Image,
+  Alert
 } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
 import Hyperlink from 'react-native-hyperlink'
@@ -40,7 +41,7 @@ function formatDate (date) {
   return Moment(`${date}`).format('D MMM YY')
 }
 
-function LinksList ({ route, navigation, links, actions }) {
+function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
   const {
     folderId,
     folderName
@@ -51,6 +52,10 @@ function LinksList ({ route, navigation, links, actions }) {
   useEffect(() => {
     actions.loadLinks(folderId)
   }, [isFocused])
+
+  useEffect(() => {
+    actions.loadLinks(folderId)
+  }, [linksLastUpdated])
 
   return (
     <View style={bodyStyles.container}>
@@ -71,7 +76,19 @@ function LinksList ({ route, navigation, links, actions }) {
 
             <View style={LinksStyles.postInfo}>
               <View style={LinksStyles.postTitleContainer}>
-              {/* <TouchableOpacity onLongPress={() => alert('pressed')}> */}
+              <TouchableOpacity onLongPress={() =>
+                Alert.alert(
+                  'Delete link',
+                  'Do you want to remove the link?',
+                  [
+                    {
+                      text: 'Cancel',
+                      style: 'cancel'
+                    },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') }
+                  ]
+                )
+              }>
                 <Hyperlink
                   linkDefault={ true }
                   linkStyle={ { color: '#22215B', fontSize: 16, fontFamily: 'interBold' } }
@@ -81,7 +98,7 @@ function LinksList ({ route, navigation, links, actions }) {
                 </Hyperlink>
                 <Text style={LinksStyles.postDate}>{formatDate(link.createdAt)}</Text>
                 <Text style={LinksStyles.postDescription}>{link.description}</Text>
-                {/* </TouchableOpacity> */}
+                </TouchableOpacity>
               </View>
             </View>
         </View>
@@ -133,7 +150,8 @@ LinksList.propTypes = {
 
 function mapStateToProps (state) {
   return {
-    links: state.links
+    links: state.links,
+    linksLastUpdated: state.linksLastUpdated
   }
 }
 

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import AsyncStorage from '@react-native-community/async-storage'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { loadUserFromStorage } from '../../redux/actions/userActions'
+import { loadUserFromStorage } from '../../../redux/actions/userActions'
 
 function SplashScreen ({ actions, navigation }) {
   const [animating, setAnimating] = useState(true)
@@ -30,7 +30,7 @@ function SplashScreen ({ actions, navigation }) {
   return (
       <View style={splashStyles.container}>
         <Image
-          source={require('../../assets/images/splash.png')}
+          source={require('../../../assets/images/splash.png')}
           style={splashStyles.imageSplash}
         />
 

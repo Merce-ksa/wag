@@ -15,7 +15,7 @@ import { loadGroups } from '../../redux/actions/groupsActions'
 import homeStyles from './HomeStyles'
 import bodyStyles from '../../assets/styles/bodyStyles'
 
-function Home ({ groups, user, actions, navigation }) {
+function Home ({ groups, user, actions, groupLastUpdated, navigation }) {
   const isFocused = useIsFocused()
 
   useEffect(() => {
@@ -25,6 +25,10 @@ function Home ({ groups, user, actions, navigation }) {
   useEffect(() => {
     actions.loadGroups()
   }, [isFocused])
+
+  useEffect(() => {
+    actions.loadGroups()
+  }, [groupLastUpdated])
 
   if (!user.email) {
     navigation.navigate('Auth')
@@ -113,6 +117,8 @@ Home.propTypes = {
     date: PropTypes.string.isRequired
   })),
 
+  groupLastUpdated: PropTypes.string,
+
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
   }).isRequired
@@ -121,7 +127,8 @@ Home.propTypes = {
 function mapStateToProps (state) {
   return {
     groups: state.groups,
-    user: state.user
+    user: state.user,
+    groupLastUpdated: state.groupLastUpdated
   }
 }
 

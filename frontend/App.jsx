@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
-import SplashScreen from './src/screens/SplashScreen/SplashScreen'
+import SplashScreen from './src/Screens/Auth/SplashScreen/SplashScreen'
 import Auth from './src/Navigation/AuthStackScreen'
 import WagApp from './src/Navigation/WagStackScreen'
 

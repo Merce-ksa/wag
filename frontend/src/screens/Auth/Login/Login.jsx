@@ -6,11 +6,11 @@ import {
   TouchableOpacity
 } from 'react-native'
 import PropTypes from 'prop-types'
-import formAuthStyles from '../../assets/styles/formAuthStyles'
+import formAuthStyles from '../../../assets/styles/formAuthStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { login } from '../../redux/actions/userActions'
-import Hero from '../../Components/Hero/Hero'
+import { login } from '../../../redux/actions/userActions'
+import Hero from '../../../Components/Hero/Hero'
 
 function Login ({ actions, user, navigation }) {
   const [email, setEmail] = useState()
