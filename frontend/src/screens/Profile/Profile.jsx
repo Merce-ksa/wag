@@ -43,7 +43,6 @@ function Profile ({ user, actions, navigation }) {
             <Text style={ProfileStyles.userName}>{user.userName ? user.userName : 'User name'}</Text>
             <TouchableOpacity
                 style={ProfileStyles.editFloat}
-                onPress={() => console.log('Editar perfil')}
             >
                 <Image source= {require('../../assets/images/edit.png')}
                 style={ProfileStyles.EditIcons} />

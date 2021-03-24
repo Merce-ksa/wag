@@ -33,7 +33,7 @@ export function createLink (url, name, description, tagSelected, folderId) {
       })
     } catch {
       dispatch({
-        type: linkActionsTypes.CREATE_LINKS_ERROR,
+        type: linkActionsTypes.CREATE_LINK_ERROR,
         linksLastUpdated: null
       })
     }

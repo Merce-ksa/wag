@@ -5,11 +5,6 @@ export default function folderReducer (state = [], actions) {
     case folderActionTypes.LOAD_FOLDERS:
       return actions.folders
 
-    case folderActionTypes.CREATE_FOLDER:
-      return actions.folderLastUpdated
-
-    case folderActionTypes.CREATE_FOLDER_ERROR:
-      return actions.folderLastUpdated
     default:
       return state
   }

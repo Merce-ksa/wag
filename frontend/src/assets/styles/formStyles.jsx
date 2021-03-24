@@ -1,55 +1,60 @@
-import { StyleSheet } from 'react-native'
+import {
+  StyleSheet,
+  StatusBar
+} from 'react-native'
 
 export default StyleSheet.create({
-  formContainer: {
-    flex: 0.5
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight,
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#22215B'
   },
+  title: {
+    marginTop: 50,
+    marginBottom: 50,
+    textAlign: 'left',
+    fontFamily: 'barlowMedium',
+    fontSize: 30,
+    fontWeight: '400',
+    color: '#fff'
+  },
+
   input: {
-    marginBottom: 15,
-    marginLeft: 15,
-    marginRight: 15,
-    height: 42,
-    borderWidth: 1,
-    borderColor: '#567DF4',
+    height: 50,
+    fontSize: 20,
+    paddingLeft: 10,
+    borderBottomColor: '#7B7F9E',
     borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderRadius: 5,
-    padding: 8
+    color: '#fff',
+    fontFamily: 'interRegular'
   },
-  inputMembers: {
-    marginTop: 15,
-    marginBottom: 15,
-    marginLeft: 15,
-    marginRight: 15,
-    height: 42,
-    borderColor: '#567DF4',
-    borderBottomWidth: 1
+  inputMargin: {
+    marginTop: 20
   },
-  submitButton: {
+
+  selectView: {
+    marginTop: 40
+  },
+
+  submitCreateElement: {
     height: 42,
-    margin: 15,
     justifyContent: 'center',
+    alignItems: 'center',
     padding: 10,
     borderRadius: 5,
-    backgroundColor: '#567DF4',
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-
-    elevation: 4
-
+    backgroundColor: '#7B7F9E'
+  },
+  marginTopMediumButton: {
+    marginTop: 200
+  },
+  marginTopBottomButton: {
+    marginTop: 300
   },
   submitButtonText: {
+    fontFamily: 'interSemiBold',
     color: '#fff',
-    textAlign: 'center',
     fontSize: 16
   }
-
 })

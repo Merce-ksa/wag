@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import bodyStyles from '../../assets/styles/bodyStyles'
-import formLinkStyles from './NewLinkStyles'
+import formStyles from '../../assets/styles/formStyles'
 
 function NewLink ({ route, navigation, actions }) {
   const { folderId } = route.params
@@ -22,18 +22,18 @@ function NewLink ({ route, navigation, actions }) {
   const [tag, setTag] = useState('')
 
   return (
-    <View style={formLinkStyles.container}>
+    <View style={formStyles.container}>
       <View style={bodyStyles.titleContent}>
         <Image
         source={require('../../assets/images/new-link-title.png')}
         style={bodyStyles.sectionIcon}
         />
-        <Text style={[{ fontFamily: 'barlowMedium' }, formLinkStyles.title]}>New Link</Text>
+        <Text style={formStyles.title}>New Link</Text>
       </View>
 
     <View key="urlName">
       <TextInput
-        style = {formLinkStyles.urlLink}
+        style = {formStyles.input}
         underlineColorAndroid = "transparent"
         placeholder = "URL"
         placeholderTextColor = "#7B7F9E"
@@ -43,7 +43,7 @@ function NewLink ({ route, navigation, actions }) {
       />
 
       <TextInput
-        style = {formLinkStyles.urlName}
+        style = {formStyles.input}
         underlineColorAndroid = "transparent"
         placeholder = "Name"
         placeholderTextColor = "#7B7F9E"
@@ -54,7 +54,7 @@ function NewLink ({ route, navigation, actions }) {
         onChangeText={(textValue) => setName(textValue)}
       />
       <TextInput
-        style = {formLinkStyles.descriptionLink}
+        style = {formStyles.input}
         underlineColorAndroid = "transparent"
         placeholder = "Description"
         placeholderTextColor = "#7B7F9E"
@@ -63,7 +63,7 @@ function NewLink ({ route, navigation, actions }) {
         value={description}
         onChangeText={(textValue) => setDescription(textValue)}
       />
-      <View style={formLinkStyles.selectView}>
+      <View style={formStyles.selectView}>
         <DropDownPicker
           items={[
             { label: 'Newsletter', value: 'newsletter', icon: () => {}, selected: true },
@@ -93,7 +93,7 @@ function NewLink ({ route, navigation, actions }) {
 
     </View>
     <TouchableOpacity
-      style = {formLinkStyles.submitCreateLink}
+      style = {[formStyles.submitCreateElement, formStyles.marginTopMediumButton]}
       onPress={() => {
         if (name === '' || name === ' ') {
           alert('Debes completar el campo del nombre')
@@ -108,7 +108,7 @@ function NewLink ({ route, navigation, actions }) {
       }}
 
     >
-    <Text style={formLinkStyles.submitButtonText}> Push Link </Text>
+    <Text style={formStyles.submitButtonText}> Push Link </Text>
     </TouchableOpacity>
 
     </View>

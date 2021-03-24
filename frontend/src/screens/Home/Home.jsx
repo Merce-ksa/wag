@@ -23,7 +23,6 @@ function Home ({ groups, user, actions, navigation }) {
   }, [])
 
   useEffect(() => {
-    console.log('use effect loadgroups')
     actions.loadGroups()
   }, [isFocused])
 

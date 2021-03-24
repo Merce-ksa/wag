@@ -10,8 +10,8 @@ import {
   TouchableOpacity
 } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
-import NewFolderStyles from './NewFolderStyles'
 import bodyStyles from '../../assets/styles/bodyStyles'
+import formStyles from '../../assets/styles/formStyles'
 
 function NewFolder ({ route, navigation, actions }) {
   const { groupId } = route.params
@@ -19,58 +19,58 @@ function NewFolder ({ route, navigation, actions }) {
   const [colorSelected, setColor] = useState()
 
   return (
-    <View style={NewFolderStyles.container}>
+    <View style={formStyles.container}>
       <View style={bodyStyles.titleContent}>
-        <Text style={[{ fontFamily: 'barlowMedium' }, NewFolderStyles.title]}>New Folder</Text>
+        <Text style={formStyles.title}>New Folder</Text>
       </View>
 
-    <View>
-      <TextInput
-        style = {NewFolderStyles.folderName}
-        underlineColorAndroid = "transparent"
-        placeholder = "Folder name"
-        placeholderTextColor = "#7B7F9E"
-        autoCapitalize = "none"
-        value={folderName}
-        onChangeText={(textValue) => setFolderName(textValue)}
-      />
-
-      <View style={NewFolderStyles.selectView}>
-        <DropDownPicker
-          items={[
-            { label: 'Blue', value: 'blue', icon: () => {}, selected: true },
-            { label: 'Red', value: 'red', icon: () => {} },
-            { label: 'Yellow', value: 'yellow', icon: () => {} },
-            { label: 'Green', value: 'green', icon: () => {} }
-          ]}
-          placeholder='Select color'
-          style={{ backgroundColor: '#22215B' }}
-          containerStyle={{ height: 40 }}
-          itemStyle={{
-            justifyContent: 'flex-start'
-          }}
-          dropDownStyle={{ backgroundColor: '#22215B', minHeight: 200 }}
-          globalTextStyle={{
-            fontFamily: 'interMedium',
-            fontSize: 18,
-            color: '#7B7F9E'
-          }}
-          arrowColor='#7B7F9E'
-          onChangeItem={item => setColor({
-            color: item.value
-          })}
+      <View>
+        <TextInput
+          style = {formStyles.input}
+          underlineColorAndroid = "transparent"
+          placeholder = "Folder name"
+          placeholderTextColor = "#7B7F9E"
+          autoCapitalize = "none"
+          value={folderName}
+          onChangeText={(textValue) => setFolderName(textValue)}
         />
+
+        <View style={formStyles.selectView}>
+          <DropDownPicker
+            items={[
+              { label: 'Blue', value: 'blue', icon: () => {}, selected: true },
+              { label: 'Red', value: 'red', icon: () => {} },
+              { label: 'Yellow', value: 'yellow', icon: () => {} },
+              { label: 'Green', value: 'green', icon: () => {} }
+            ]}
+            placeholder='Select color'
+            style={{ backgroundColor: '#22215B' }}
+            containerStyle={{ height: 40 }}
+            itemStyle={{
+              justifyContent: 'flex-start'
+            }}
+            dropDownStyle={{ backgroundColor: '#22215B', minHeight: 200 }}
+            globalTextStyle={{
+              fontFamily: 'interMedium',
+              fontSize: 18,
+              color: '#7B7F9E'
+            }}
+            arrowColor='#7B7F9E'
+            onChangeItem={item => setColor({
+              color: item.value
+            })}
+          />
+        </View>
       </View>
-    </View>
-    <TouchableOpacity
-      style = {NewFolderStyles.submitCreateFolder}
-      onPress={() => {
-        actions.createFolder(folderName, colorSelected, groupId)
-        navigation.navigate('FolderList')
-      }}
-    >
-    <Text style={NewFolderStyles.submitButtonText}> Create </Text>
-    </TouchableOpacity>
+      <TouchableOpacity
+        style = {[formStyles.submitCreateElement, formStyles.marginTopBottomButton]}
+        onPress={() => {
+          actions.createFolder(folderName, colorSelected, groupId)
+          navigation.navigate('FolderList')
+        }}
+      >
+      <Text style={formStyles.submitButtonText}> Create </Text>
+      </TouchableOpacity>
 
     </View>
   )

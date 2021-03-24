@@ -21,15 +21,13 @@ export function loadGroups () {
 }
 
 export function createGroup (name, members) {
-  console.log(name, members)
-
   return async (dispatch) => {
     try {
       await axios.post(`${host}/groups`, { name, members }, { withCredentials: true })
-      console.log('entra')
+
       dispatch({
-        type: groupActionsTypes.CREATE_GROUP
-        // groupLastUpdated: `${new Date()}`
+        type: groupActionsTypes.CREATE_GROUP,
+        groupLastUpdated: `${new Date()}`
       })
     } catch {
       dispatch({

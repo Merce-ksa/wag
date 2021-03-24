@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { loadLinks, createLink } from '../../redux/actions/linkActions'
+import { loadLinks } from '../../redux/actions/linkActions'
 import {
   Text,
   View,
@@ -40,7 +40,7 @@ function formatDate (date) {
   return Moment(`${date}`).format('D MMM YY')
 }
 
-function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
+function LinksList ({ route, navigation, links, actions }) {
   const {
     folderId,
     folderName
@@ -71,6 +71,7 @@ function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
 
             <View style={LinksStyles.postInfo}>
               <View style={LinksStyles.postTitleContainer}>
+              {/* <TouchableOpacity onLongPress={() => alert('pressed')}> */}
                 <Hyperlink
                   linkDefault={ true }
                   linkStyle={ { color: '#22215B', fontSize: 16, fontFamily: 'interBold' } }
@@ -80,6 +81,7 @@ function LinksList ({ route, navigation, links, linksLastUpdated, actions }) {
                 </Hyperlink>
                 <Text style={LinksStyles.postDate}>{formatDate(link.createdAt)}</Text>
                 <Text style={LinksStyles.postDescription}>{link.description}</Text>
+                {/* </TouchableOpacity> */}
               </View>
             </View>
         </View>
@@ -137,7 +139,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators({ loadLinks, createLink }, dispatch)
+    actions: bindActionCreators({ loadLinks }, dispatch)
   }
 }
 
