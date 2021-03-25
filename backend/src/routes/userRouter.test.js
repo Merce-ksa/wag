@@ -3,7 +3,7 @@ const md5 = require('md5');
 const User = require('../models/userModel');
 const app = require('../../server');
 
-xdescribe('Given a /user/me endpoint', () => {
+describe('Given a /user/me endpoint', () => {
   test('Should get user when exists', async () => {
     const request = supertest(app);
 
@@ -11,7 +11,7 @@ xdescribe('Given a /user/me endpoint', () => {
       userName: 'User name',
       email: 'user@user.com',
       password: md5('user'),
-      registeredAt: [2021, 12, 21],
+      registeredAt: new Date(),
       photoURL: 'https://avatars..svg'
     });
 

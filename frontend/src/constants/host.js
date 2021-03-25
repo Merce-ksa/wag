@@ -5,4 +5,4 @@ const hostApp = {
   home: 'http://192.168.1.26:5000'
 }
 
-export default hostApp.home
+export default hostApp.sky

@@ -36,7 +36,7 @@ function NewGroup ({ navigation, actions }) {
       <TextInput
         style = {[formStyles.input, formStyles.inputMargin]}
         underlineColorAndroid = "transparent"
-        placeholder = "Mail to members"
+        placeholder = "Add members"
         placeholderTextColor = "#7B7F9E"
         autoCapitalize = "none"
 
