@@ -1,8 +1,5 @@
-/* eslint-disable camelcase */
 import { StyleSheet } from 'react-native'
-import {
-//   Inter_600SemiBold
-} from '@expo-google-fonts/inter'
+
 export default StyleSheet.create({
   brand: {
     textAlign: 'left',

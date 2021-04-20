@@ -17,6 +17,7 @@ import bodyStyles from '../../assets/styles/bodyStyles'
 
 function Home ({ groups, user, actions, groupLastUpdated, navigation }) {
   const isFocused = useIsFocused()
+  console.log('Entra al componente')
 
   useEffect(() => {
     actions.loadUserFromStorage()
@@ -36,63 +37,67 @@ function Home ({ groups, user, actions, groupLastUpdated, navigation }) {
 
   return (
     <View style={bodyStyles.container}>
-    <View style={bodyStyles.titleContent}>
-    <Image
-      source={require('../../assets/images/groups.png')}
-      style={bodyStyles.sectionIcon}
-    />
-      <Text style={bodyStyles.title}>Hi {user.userName}!</Text>
+      <View style={bodyStyles.titleContent}>
+      <Image
+        key="icon-groups"
+        source={require('../../assets/images/groups.png')}
+        style={bodyStyles.sectionIcon}
+      />
+        <Text style={bodyStyles.title}>Hi {user.userName}!</Text>
 
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('Profile')
-        }
-      >
-      </TouchableOpacity>
-
-    </View>
-    <ScrollView key="groupsContainer">
-      <View style={homeStyles.groupsContainer}>
-        <Text style={homeStyles.titleGroups}>My groups</Text>
-      {groups && groups.map((group) => (
         <TouchableOpacity
-          key={group.name}
-          style={homeStyles.cardContent}
-          onPress={() => navigation.navigate('FolderList', {
-            groupId: group.groupId,
-            groupName: group.name
-          })}
+          testID="profile-navigate"
+          onPress={() =>
+            navigation.navigate('Profile')
+          }
         >
-          <View style={homeStyles.infoGroupRight}>
-            <Text style={homeStyles.card}>
-                  {group.name}
-              </Text>
-              <Text style={homeStyles.cardDate}>
-                  {group.date}
-              </Text>
-          </View>
-          <View style={homeStyles.infoGroupRight}>
-            <Text style={homeStyles.arrowGroup}>→</Text>
-          </View>
-
         </TouchableOpacity>
-      ))}
+
       </View>
-      <View style={[homeStyles.groupsContainer, homeStyles.newGroupContainer]}>
-          <Text style={homeStyles.titleGroups}>Create your own group</Text>
-          <Text style={homeStyles.subTitleGroups}>
-              Share a world of resources with your friends.
-          </Text>
-          <View style={homeStyles.newGroupButtonContainer}>
-            <TouchableOpacity
-              style={homeStyles.newGroupButton}
-              onPress={() => navigation.navigate('NewGroup')}
-            >
-              <Text style={homeStyles.textGroupButton}>Create group</Text>
+      <ScrollView key="groupsContainer">
+        <View style={homeStyles.groupsContainer}>
+          <Text style={homeStyles.titleGroups}>My groups</Text>
+        {groups && groups.map((group) => (
+          <TouchableOpacity
+            key={group.name}
+            style={homeStyles.cardContent}
+            onPress={() => navigation.navigate('FolderList', {
+              groupId: group.groupId,
+              groupName: group.name
+            })}
+            testID="group-name"
+          >
+            <View style={homeStyles.infoGroupRight}>
+              <Text style={homeStyles.card} testID="group-name">
+                    {group.name}
+                </Text>
+                <Text style={homeStyles.cardDate}>
+                    {group.date}
+                </Text>
+            </View>
+            <View style={homeStyles.infoGroupRight}>
+              <Text style={homeStyles.arrowGroup}>→</Text>
+            </View>
+
           </TouchableOpacity>
-          </View>
-      </View>
-    </ScrollView>
+        ))}
+        </View>
+        <View style={[homeStyles.groupsContainer, homeStyles.newGroupContainer]}>
+            <Text style={homeStyles.titleGroups}>Create your own group</Text>
+            <Text style={homeStyles.subTitleGroups}>
+                Share a world of resources with your friends.
+            </Text>
+            <View style={homeStyles.newGroupButtonContainer}>
+              <TouchableOpacity
+                style={homeStyles.newGroupButton}
+                onPress={() => navigation.navigate('NewGroup')}
+                testID="group-navigate"
+              >
+                <Text style={homeStyles.textGroupButton}>Create group</Text>
+            </TouchableOpacity>
+            </View>
+        </View>
+      </ScrollView>
   </View>
   )
 }
@@ -109,12 +114,12 @@ Home.propTypes = {
   }),
 
   groups: PropTypes.arrayOf(PropTypes.shape({
-    groupId: PropTypes.string.isRequired,
+    groupId: PropTypes.string,
     members: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+      PropTypes.string
+    ),
+    name: PropTypes.string,
+    date: PropTypes.string
   })),
 
   groupLastUpdated: PropTypes.string,

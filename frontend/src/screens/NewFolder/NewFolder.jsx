@@ -18,10 +18,12 @@ function NewFolder ({ route, navigation, actions }) {
   const [folderName, setFolderName] = useState()
   const [colorSelected, setColor] = useState()
 
+  console.log(colorSelected)
+
   return (
     <View style={formStyles.container}>
       <View style={bodyStyles.titleContent}>
-        <Text style={formStyles.title}>New Folder</Text>
+        <Text style={formStyles.title} testID="newFolderTitle">New Folder</Text>
       </View>
 
       <View>
@@ -33,6 +35,7 @@ function NewFolder ({ route, navigation, actions }) {
           autoCapitalize = "none"
           value={folderName}
           onChangeText={(textValue) => setFolderName(textValue)}
+          testID="inputFolderName"
         />
 
         <View style={formStyles.selectView}>
@@ -59,6 +62,8 @@ function NewFolder ({ route, navigation, actions }) {
             onChangeItem={item => setColor({
               color: item.value
             })}
+            id="folderColorSelected"
+
           />
         </View>
       </View>
@@ -68,8 +73,9 @@ function NewFolder ({ route, navigation, actions }) {
           actions.createFolder(folderName, colorSelected, groupId)
           navigation.navigate('FolderList')
         }}
-      >
-      <Text style={formStyles.submitButtonText}> Create </Text>
+        testID = 'createNewFolderButton'
+        >
+        <Text style={formStyles.submitButtonText}> Create </Text>
       </TouchableOpacity>
 
     </View>

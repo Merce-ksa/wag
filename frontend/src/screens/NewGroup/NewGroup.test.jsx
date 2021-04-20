@@ -8,7 +8,7 @@ import {
   fireEvent,
   cleanup
 } from '@testing-library/react-native'
-import NewGroup from './NewGoup'
+import NewGroup from './NewGroup'
 
 describe('Given a NewGroup component', () => {
   const navigation = {

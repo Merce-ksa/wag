@@ -8,6 +8,9 @@ export function loadGroups () {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${host}/groups`, { withCredentials: true })
+
+      console.log(data)
+
       dispatch({
         type: groupActionsTypes.LOAD_GROUPS,
         groups: data

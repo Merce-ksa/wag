@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Home from '../Screens/Home/Home'
-import NewGroup from '../Screens/NewGroup/NewGoup'
+import NewGroup from '../Screens/NewGroup/NewGroup'
 import FolderList from '../Screens/FolderList/FolderList'
 import NewFolder from '../Screens/NewFolder/NewFolder'
 import LinksList from '../Screens/Links/Links'

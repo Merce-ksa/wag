@@ -58,6 +58,7 @@ export function logout () {
 }
 
 export function loadUserFromStorage () {
+  // console.log('hola')
   return async (dispatch) => {
     const userFromStorage = await AsyncStorage.getItem('user')
     const user = JSON.parse(userFromStorage)

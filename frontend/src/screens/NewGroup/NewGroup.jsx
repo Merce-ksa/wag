@@ -31,6 +31,7 @@ function NewGroup ({ navigation, actions }) {
         autoCapitalize = "none"
         value={groupName}
         onChangeText={(textValue) => setGroupName(textValue)}
+        testID="inputGroupName"
       />
 
       <TextInput
@@ -45,6 +46,8 @@ function NewGroup ({ navigation, actions }) {
 
         value={members}
         onChangeText={(textValue) => setMembers(textValue)}
+
+        testID="inputAddMembersGroup"
       />
     </View>
     <TouchableOpacity
@@ -53,8 +56,9 @@ function NewGroup ({ navigation, actions }) {
         actions.createGroup(groupName, members)
         navigation.navigate('Home')
       }}
+      testID="createNewGroupButton"
     >
-    <Text style={formStyles.submitButtonText}> Create </Text>
+    <Text style={formStyles.submitButtonText} testID="createNewGroupButtonText"> Create </Text>
     </TouchableOpacity>
 
     </View>

@@ -1,0 +1,352 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a Home function When is rendered Then the SnapShot should match the rendered tree 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FAFAFA",
+      "flex": 1,
+      "marginTop": null,
+      "paddingLeft": 20,
+      "paddingRight": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "height": 50,
+          "marginRight": 10,
+          "resizeMode": "contain",
+          "width": 50,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "fontFamily": "barlowMedium",
+          "fontSize": 30,
+          "fontWeight": "400",
+          "marginBottom": 50,
+          "marginTop": 50,
+          "textAlign": "left",
+        }
+      }
+    >
+      Hi 
+      mockName
+      !
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    />
+  </View>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 20,
+            "padding": 10,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "interSemiBold",
+              "fontSize": 18,
+            }
+          }
+        >
+          My groups
+        </Text>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#fff",
+              "borderBottomEndRadius": 10,
+              "borderRadius": 5,
+              "borderTopEndRadius": 10,
+              "elevation": 6,
+              "flexDirection": "row",
+              "height": 60,
+              "justifyContent": "space-between",
+              "marginBottom": 15,
+              "marginLeft": 5,
+              "marginRight": 5,
+              "marginTop": 15,
+              "opacity": 1,
+              "padding": 10,
+              "shadowColor": "#000",
+              "shadowOffset": Object {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.3,
+              "shadowRadius": 4.65,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "marginRight": 20,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#22215B",
+                  "fontFamily": "interMedium",
+                  "fontSize": 20,
+                  "paddingLeft": 10,
+                }
+              }
+            >
+              mockGroupName
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#7B7F9E",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "paddingLeft": 10,
+                }
+              }
+            >
+              mockDate
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "marginRight": 20,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontFamily": "interRegular",
+                  "fontSize": 18,
+                }
+              }
+            >
+              →
+            </Text>
+          </View>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#fff",
+              "borderBottomEndRadius": 10,
+              "borderRadius": 5,
+              "borderTopEndRadius": 10,
+              "elevation": 6,
+              "flexDirection": "row",
+              "height": 60,
+              "justifyContent": "space-between",
+              "marginBottom": 15,
+              "marginLeft": 5,
+              "marginRight": 5,
+              "marginTop": 15,
+              "opacity": 1,
+              "padding": 10,
+              "shadowColor": "#000",
+              "shadowOffset": Object {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.3,
+              "shadowRadius": 4.65,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "marginRight": 20,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#22215B",
+                  "fontFamily": "interMedium",
+                  "fontSize": 20,
+                  "paddingLeft": 10,
+                }
+              }
+            >
+              mockGroupName2
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#7B7F9E",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "paddingLeft": 10,
+                }
+              }
+            >
+              mockDate
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "marginRight": 20,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontFamily": "interRegular",
+                  "fontSize": 18,
+                }
+              }
+            >
+              →
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+              "borderRadius": 20,
+              "padding": 10,
+            },
+            Object {
+              "backgroundColor": "#fff",
+              "borderRadius": 20,
+              "height": 150,
+              "marginTop": 30,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "interSemiBold",
+              "fontSize": 18,
+            }
+          }
+        >
+          Create your own group
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontFamily": "interRegular",
+              "fontSize": 16,
+              "marginTop": 5,
+            }
+          }
+        >
+          Share a world of resources with your friends.
+        </Text>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#567DF4",
+                "borderRadius": 5,
+                "height": 38,
+                "justifyContent": "center",
+                "margin": 15,
+                "opacity": 1,
+                "padding": 10,
+                "width": 150,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontSize": 16,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Create group
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
