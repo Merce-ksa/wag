@@ -26,7 +26,7 @@ function Register ({ actions, user, navigation }) {
       <Hero />
 
       <View style={formAuthStyles.titleContainer}>
-        <Text style={[{ fontFamily: 'barlowMedium' }, formAuthStyles.title]}>Sing up</Text>
+        <Text style={[{ fontFamily: 'barlowMedium' }, formAuthStyles.title]}>Sign up</Text>
       </View>
 
       <View style={formAuthStyles.formContainer}>
